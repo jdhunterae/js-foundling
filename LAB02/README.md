@@ -7,6 +7,6 @@ LAB02
 --------------
 A project using JavaScript to create an HTML Application as a stand-alone .hta file.
 Includes:
-- document.write() to populate a menu bar/box
 - client-side form validation
-- user feedback on form validation
+- simple math and variable manipulation
+- use of the HTA:APPLICATION interface
