@@ -1,0 +1,47 @@
+/**********************************************************************
+ ***   Main Stylesheet for Control Structures and Arrays            ***
+ ***   @author: Andrew Pomerleau                                    ***
+ ***   @date:   02/09/2014                                          ***
+ **********************************************************************/
+
+/**
+ * Style Formatting
+ **/
+
+/**
+ * Container specific styling
+ **/
+ #output {
+  overflow: auto;
+  height: 330px;
+  background: #ddd;
+}
+#output .action {
+  color: #090;
+}
+#output .console {
+  color: #900;
+}
+#output .user {
+  color: #939393;
+}
+#output .command {
+  color: #393939;
+}
+#input {
+  padding: 5px;
+  color: #fff;
+  background: #333;
+}
+#input strong {
+  color: #fd0;
+}
+#input input[type='text'] {
+  width: 75%;
+}
+#input input[type='button'] {
+  width: 20%;
+}
+#form * {
+  margin: 0;
+}

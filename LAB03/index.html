@@ -1,0 +1,38 @@
+<!--
+	JavaScript Control Structures and Arrays Example
+	@author: Andrew Pomerleau
+	@date:   02/09/2014
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>LAB 03 :: Control Structures Game</title>
+
+  <!-- STYLES LOADING BAY -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- PRE-DOM SCRIPTS LOADING BAY -->
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+
+  <div id="output"></div>
+  <div id="input">
+    <div id="form">
+      <p id="input_prompt"></p>
+      <input type="text" name="" id="user_input" onkeydown="if (event.keyCode == 13) document.getElementById('submit_button').click();" />
+      <input type="button" value="submit" id="submit_button" onclick="submitInput();" />
+    </div>
+  </div>
+
+  <!-- POST-DOM SCRIPTS LOADING BAY -->
+  <script>
+  mainLoop(gameStep);
+  </script>
+</body>
+
+</html>
