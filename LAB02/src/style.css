@@ -1,0 +1,67 @@
+/**********************************************************************
+ ***   Main Stylesheet for Stand-alone HTML/JS App                  ***
+ ***   @author: Andrew Pomerleau                                    ***
+ ***   @date:   02/03/2014                                          ***
+ **********************************************************************/
+
+/**
+ * Style Formatting
+ **/
+ body {
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  color: #333;
+  background-color: #e5e5e5;
+}
+table {
+  width: 350px;
+  border: 2px solid #0e0e0e;
+}
+thead {
+  border: 2px solid: #0e0e0e;
+  background-color: #cecece;
+}
+tbody {
+  background-color: #ececee;
+}
+td[colspan='2'] input {
+  float: right;
+}
+input {
+  text-align: right;
+  border-radius: 5px;
+}
+input[type='button'] {
+  padding: 4px 12px;
+  color: #333;
+  background-color: #aaa;
+}
+input[readonly='readonly'] {
+  color: #333;
+  background-color: #e5e5e5;
+}
+/**
+ * Container specific styling
+ **/
+ .title {
+  text-transform: capitalize;
+  color: #0e0e0e;
+}
+.directions {
+  font-size: small;
+  color: #555;
+}
+.label {
+  font-size: small;
+  text-align: right;
+  color: #363636;
+}
+.readonly {
+  font-size: small;
+  text-align: right;
+  color: #636363;
+}
+#error_message {
+  font-size: small;
+  padding: 0 5px;
+  color: #f00;
+}

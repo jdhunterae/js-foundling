@@ -1,0 +1,112 @@
+<!--
+	Stand-alone HTML Application using JavaScript
+	@author: Andrew Pomerleau
+	@date:   02/03/2014
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Car Payment Calculator</title>
+
+  <!-- STYLES LOADING BAY -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- PRE-DOM SCRIPTS LOADING BAY -->
+  <!-- NONE -->
+</head>
+
+<body>
+  <form action="">
+    <table>
+
+      <thead>
+        <tr>
+          <th class="title" colspan="2">car loan payment calculator</th>
+        </tr>
+        <tr>
+          <td class="directions" colspan="2">Enter the details of your loan.
+            <br/>Click the
+            <strong>calculate</strong>
+            button to calculate the monthly payments.</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="label">
+            <label for="total_loan">Total Loan Amount:</label>
+          </td>
+          <td>$
+            <input type="text" name="total_loan" id="total_loan" size="8em" />
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            <label for="interest_rate">Yearly Interest Rate:</label>
+          </td>
+          <td>
+            <input type="text" name="interest_rate" id="interest_rate" size="7em">&#37;</td>
+        </tr>
+        <tr>
+          <td class="label">
+            <label for="loan_term">Loan Term (Yrs.):</label>
+          </td>
+          <td>
+            <input type="text" name="loan_term" id="loan_term" size="10em">
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            <input type="button" value="calculate" id="calculate_button" onclick="return calculateForm();" name="calculate_button" />
+          </td>
+        </tr>
+        <tr>
+          <td id="error_message" colspan="2"></td>
+        </tr>
+
+        <tr>
+          <td class="label readonly">
+            <label for="number_payments">Number of Payments:</label>
+          </td>
+          <td>
+            <input type="text" name="number_payments" id="number_payments" size="10em" readonly="readonly">
+          </td>
+        </tr>
+        <tr>
+          <td class="label readonly">
+            <label for="payment_amount">Payment Amount:</label>
+          </td>
+          <td>$
+            <input type="text" name="payment_amount" id="payment_amount" size="8em" readonly="readonly">
+          </td>
+        </tr>
+        <tr>
+          <td class="label readonly">
+            <label for="total_paid">Total Paid:</label>
+          </td>
+          <td>$
+            <input type="text" name="total_paid" id="total_paid" size="8em" readonly="readonly">
+          </td>
+        </tr>
+        <tr>
+          <td class="label readonly">
+            <label for="interest_paid">Interest Paid:</label>
+          </td>
+          <td>$
+            <input type="text" name="interest_paid" id="interest_paid" size="8em" readonly="readonly">
+          </td>
+        </tr>
+      </tbody>
+      
+    </table>
+  </form>
+
+  <!-- POST-DOM SCRIPTS LOADING BAY -->
+  <script src="script.js"></script>
+</body>
+
+</html>
