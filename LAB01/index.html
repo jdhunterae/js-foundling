@@ -1,0 +1,95 @@
+<!--
+    Form Validation Example Page for Lesson 2
+    @author: Andrew Pomerleau
+    @date:   01/25/2014
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Weberleau Designs :: Customer Feedback Submitted</title>
+
+  <!-- STYLES LOADING BAY -->
+  <link rel="stylesheet" href="css/main.css" />
+
+  <!-- PRE-DOM SCRIPTS LOADING BAY -->
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+
+  <div id="logo">
+    <h1>Weberleau Designs</h1>
+    <h3>Customer Feedback Form</h3>
+  </div>
+
+  <div id="menu">
+    <script>
+    document.write(get_menu("contact"));
+    </script>
+  </div>
+
+  <div id="content">
+    <h3>Contact/Feedback</h3>
+    <p>We love to hear from our customers, and potential clients. Please use the form below to submit any questions or comments you have.</p>
+    <form action="submit_feedback.html" id="feedback_form" method="get" onsubmit="return validate_feedback();" name="feedback_form" onreset="return reset_form();">
+      <fieldset>
+        <legend>Customer Feedback Information</legend>
+
+        <div id="error_message"></div>
+        <label>
+          Name:
+          <input type="text" name="first_name" placeholder="first name" id="first_name" />
+          <input type="text" name="last_name" placeholder="last name" id="last_name" />
+        </label>
+        <br/>
+        <label>
+          E-mail:
+          <input type="text" name="email" placeholder="someone@web.com" id="email" />
+        </label>
+        <label>
+          Phone:
+          <input type="text" name="phone" placeholder="740-555-5512" id="phone" />
+        </label>
+        <br/>
+        <label>
+          Feedback/Comments:
+          <br/>
+          <textarea id="comments" maxlength="1000" rows="6" placeholder="Comments and questions..." cols="50"></textarea>
+        </label>
+        <br/>
+        <span id="buttons">
+          <input type="submit" id="submit" name="submit" value="submit" />
+          <input type="reset" onclick="reset_form();" id="reset" name="reset" value="reset" />
+        </span>
+      </fieldset>
+    </form>
+  </div>
+
+  <div id="social">
+    <h3>Keep Up with Us on the Twitterbook+</h3>
+    <p>Find us on all of your favorite social media pages.
+      <br/>And don't forget to subscribe to learn about new and discounted services.
+      <br/>
+      <span id="icons">
+        <a href="http://plus.google.com">
+          <img src="img/google_plus.png" alt="google+ icon">
+        </a>
+        <a href="http://www.facebook.com">
+          <img src="img/facebook.png" alt="facebook icon">
+        </a>
+        <a href="http://www.twitter.com">
+          <img src="img/twitter.png" alt="twitter icon">
+        </a>
+      </span>
+    </p>
+    <h5>We Have a No Social-Ville Request Guarantee.</h5>
+  </div>
+
+  <!-- POST-DOM SCRIPTS LOADING BAY -->
+  <!-- NONE -->
+</body>
+
+</html>

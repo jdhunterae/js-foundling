@@ -1,0 +1,149 @@
+/**********************************************************************
+ ***   Main Stylesheet for Lesson 2 Example Pages                   ***
+ ***   @author: Andrew Pomerleau                                    ***
+ ***   @date:   01/25/2014                                          ***
+ **********************************************************************/
+
+/**
+ * Style Formatting
+ **/
+ html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  color: #564b47;
+  background-color: #e1ddd9;
+}
+a {
+  font-size: 11px;
+  text-decoration: none;
+  color: #f6c;
+  background-color: transparent;
+}
+pre {
+  font-family: Courier, Monaco, Monospace;
+  font-size: 11px;
+  color: #564b47;
+  background-color: #e1ddd9;
+}
+p, h1, h2, h3, h4, h5, h6 pre {
+  clear: both;
+  margin: 0;
+  padding: 5px 15px;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  color: #564b47;
+  background-color: transparent;
+}
+h1 {
+  font-size: 16px;
+}
+h2 {
+  font-size: 14px;
+}
+h3 {
+  font-size: 13px;
+}
+h4 {
+  font-size: 12px;
+}
+h5 {
+  font-size: 11px;
+}
+h6 {
+  font-size: 10px;
+}
+fieldset {
+  margin: 10px;
+}
+legend {
+  font-size: 10px;
+  font-weight: bold;
+  color: #666;
+}
+/**
+ * Positioning Formatting
+ **/
+ #logo {
+  position: absolute;
+  top: 20px;
+  right: 2%;
+  width: 96%;
+  text-align: right;
+}
+#menu {
+  position: absolute;
+  top: 106px;
+  left: 76%;
+  width: 22%;
+  background-color: #fff;
+}
+#social {
+  position: absolute;
+  top: 226px;
+  left: 76%;
+  overflow: auto;
+  width: 22%;
+  background-color: #fff;
+}
+#content {
+  position: absolute;
+  top: 106px;
+  left: 2%;
+  overflow: auto;
+  width: 72%;
+  min-height: 310px;
+  background-color: #fff;
+}
+#menu, #content, #social {
+  margin: 0;
+  padding: 0;
+  border: 1px solid #564b47;
+}
+#buttons input {
+  float: right;
+}
+/**
+ * Container specific styling
+ **/
+ #menu ul {
+  padding: 0 15px;
+  list-style: none;
+}
+#menu ul li {
+  font-size: 11px;
+  color: #c6c;
+}
+#menu ul li a {
+  display: block;
+  color: #f6c;
+  background-color: transparent;
+}
+#menu ul li a:hover {
+  color: #fff;
+  background-color: #f6c;
+}
+#feedback_form fieldset {
+  width: 110px;
+}
+#error_message {
+  margin: 0;
+  padding: 0;
+  color: #f00;
+}
+#error_message p {
+  margin: 0;
+  padding: 5px 0;
+  color: #f00;
+}
+#icons img {
+  display: inline-block;
+  float: right;
+  margin: 2px 1px;
+}
