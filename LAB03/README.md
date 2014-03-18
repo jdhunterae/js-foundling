@@ -3,10 +3,11 @@ js-foundling
 
 *A repository for all my WSCC DTWP-2350 JavaScript Labs.*
 
-LAB01
+LAB03
 --------------
-A project to incorporate simple JavaScript functionality into a page.
+A project to incorporate simple JavaScript controll structures into a simple text adventure.
 Includes:
-- document.write() to populate a menu bar/box
-- client-side form validation
-- user feedback on form validation
+- if statements
+- while and for loops
+- switch statements
+- and arrays
