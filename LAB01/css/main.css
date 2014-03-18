@@ -129,8 +129,8 @@ legend {
   color: #fff;
   background-color: #f6c;
 }
-#feedback_form fieldset {
-  width: 110px;
+#feedback_form {
+  width: 530px;
 }
 #error_message {
   margin: 0;
