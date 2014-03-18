@@ -65,8 +65,11 @@ function get_menu(current_page) {
 
 function reset_form() {
   clear_message();
-  document.forms.feedback_form.name.value = "";
+  
+  document.forms.feedback_form.first_name.value = "";
+  document.forms.feedback_form.last_name.value = "";
   document.forms.feedback_form.email.value = "";
+  document.forms.feedback_form.phone.value = "";
   document.forms.feedback_form.comments.value = "";
 
   return true;

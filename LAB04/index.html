@@ -1,0 +1,123 @@
+<!--
+JavaScript External Libraries Example
+@author: Andrew Pomerleau
+@date:   02/25/2014
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Weberleau Designs :: Customer Feedback Page</title>
+
+  <!-- STYLES LOADING BAY -->
+  <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.css">
+  <link href="css/main.css" type="text/css" rel="stylesheet" />
+
+  <!-- PRE-DOM SCRIPTS LOADING BAY -->
+  <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+  <script src="js/jquery-ui-1.10.4.custom.js" type="text/javascript"></script>
+  <script src="js/main.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div id="dialog-form" title="Subscribe to our Newsletter">
+    <p class="validateTips">All form fields are required.</p>
+    <form>
+      <fieldset>
+        <label for="sub-name">Name</label>
+        <input type="text" name="name" id="sub-name" class="text ui-widget-content ui-corner-all">
+        <label for="sub-email">Email</label>
+        <input type="text" name="email" id="sub-email" value="" class="text ui-widget-content ui-corner-all">
+      </fieldset>
+    </form>
+  </div>
+
+  <div id="logo">
+    <h1>Weberleau Designs</h1>
+    <h3>Customer Feedback Form</h3>
+  </div>
+
+  <div id="menu">
+    <script type="text/javascript">
+    document.write(get_menu("contact"));
+    </script>
+  </div>
+
+  <div id="content">
+    <h3>Page Content Header</h3>
+    <div id="modal-alert"></div>
+    <p>We love to hear from our customers, and potential clients. Please use the below form to submit any questions or comments.</p>
+
+    <div id="captcha-container">
+      <p id="captcha-instructions"></p>
+      <div id="successerror"></div>
+      <img src="img/chrome.png" alt="key icon" id="draggable1" class="draggable ui-widget-content" data-name="chrome icon">
+      <img src="img/firefox.png" alt="key icon" id="draggable2" class="draggable ui-widget-content" data-name="firefox icon">
+      <img src="img/smart-phone-icon.jpg" alt="keyhole icon" id="droppable" class="ui-widget-header" data-name="phone icon">
+    </div>
+    
+    <div id="form-container">
+      <form action="submit_feedback.html" method="get" onsubmit="return validate_feedback();" name="feedback_form" id="feedback_form">
+        <fieldset>
+          <legend>Customer Feedback Information</legend>
+          <div id="error_message"></div>
+          <label>First Name:
+            <input type="text" class="text ui-widget-content ui-corner-all" name="first_name" placeholder="first name" id="first_name" />
+          </label>
+          <label>Last Name:
+            <input type="text" class="text ui-widget-content ui-corner-all" name="last_name" placeholder="last name" id="last_name" />
+          </label>
+          <br/>
+          <label>E-mail:
+            <input type="text" class="text ui-widget-content ui-corner-all" name="email" placeholder="someone@web.com" id="email" />
+          </label>
+          <label>Phone:
+            <input class="text ui-widget-content ui-corner-all" type="text" name="phone" placeholder="740-555-5512" id="phone" />
+          </label>
+          <br/>
+          <label>Feedback/Comments:
+            <br/>
+            <textarea class="text ui-widget-content ui-corner-all" id="comments" maxlength="1000" rows="6" placeholder="Comments and questions..." cols="50"></textarea>
+          </label>
+          <br/>
+          <span id="buttons">
+            <button role="button" type="submit" class="ui-button ui-widget ui-button-text-only ui-corner-all" id="submit" name="submit" value="submit" title="You have to verify that you're human first.">
+              <span class="ui-button-text">submit</span>
+            </button>
+            <button type="reset" onclick="reset_form();" id="reset" class="ui-button ui-widget ui-button-text-only ui-corner-all" name="reset" value="reset">
+              <span class="ui-button-text">reset</span>
+            </button>
+          </span>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <div id="social">
+    <h3>Keep Up with Us on the Twitterbook+</h3>
+    <p>Find us on all of your favorite social media pages.
+      <br/>And don't forget to subscribe to learn about new and discounted services.</p>
+    <p>
+      <span id="icons">
+        <a href="http://plus.google.com/">
+          <img alt="google+ icon" src="img/google_plus.png" />
+        </a>
+        <a href="http://www.facebook.com/">
+          <img alt="facebook icon" src="img/facebook.png" />
+        </a>
+        <a href="http://www.twitter.com/">
+          <img alt="twitter icon" src="img/twitter.png" />
+        </a>
+        <button id="subscribe-action">Subscribe</button>
+      </span>
+    </p>
+    <h5>We Have a No Social-Ville Request Guarantee.</h5>
+  </div>
+
+  <!-- POST-DOM SCRIPTS LOADING BAY -->
+  <!-- NONE -->
+</body>
+
+</html>
