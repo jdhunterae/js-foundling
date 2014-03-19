@@ -7,9 +7,8 @@ LAB05
 --------------
 A project to incorporate JavaScript objects.
 Includes:
-- jQuery element wrappers $()
-- jQuery element methods
-- jQuery-UI functionality:
--- Modal Form
--- CSS animated fading alerts
--- draggable/droppable objects for simple captcha form validation
+- Using a function as a constructor
+- Objects containing:
+	- Methods
+	- Properties
+- Encapsilation for performance
