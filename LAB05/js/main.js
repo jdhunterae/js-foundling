@@ -149,7 +149,7 @@ function newGame() {
 
 function attackAction() {
   if (!($("#attack-btn").hasClass('disabled'))) {
-    output("[attack:clicked]");
+    // output("[attack:clicked]");
     actionRound();
   }
 }
@@ -157,7 +157,7 @@ function attackAction() {
 function defendAction() {
   if (!($("#defend-btn").hasClass('disabled'))) {
     player.isdefending = true;
-    output("[defend:clicked]");
+    // output("[defend:clicked]");
     actionRound();
   }
 }
@@ -165,7 +165,7 @@ function defendAction() {
 function healAction() {
   if (!($("#heal-btn").hasClass('disabled'))) {
     player.ishealing = true;
-    output("[heal:clicked]");
+    // output("[heal:clicked]");
     actionRound();
   }
 }
