@@ -10,6 +10,6 @@ Includes:
 - jQuery element wrappers $()
 - jQuery element methods
 - jQuery-UI functionality:
--- Modal Form
--- CSS animated fading alerts
--- draggable/droppable objects for simple captcha form validation
+	- Modal Form
+	- CSS animated fading alerts
+	- draggable/droppable objects for simple captcha form validation
