@@ -1,0 +1,156 @@
+LAST ARCHIVE: 2014-03-23
+========================
+STARTING ARCHIVE PROCESS...
+  RETRIEVING PROJECT DIRECTORIES...
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+    ACESSING: LAB05/css
+    ACESSING: LAB05/css/vendor
+    ACESSING: LAB05/js
+    ACESSING: LAB05/js/foundation
+    ACESSING: LAB05/js/vendor
+      ARCHIVING: LAB05/README.md
+      ARCHIVING: LAB05/index.html
+      ARCHIVING: LAB05/css/vendor/normalize.css
+      ARCHIVING: LAB05/css/vendor/foundation.min.css
+      ARCHIVING: LAB05/css/vendor/foundation.css
+      ARCHIVING: LAB05/css/main.css
+      ARCHIVING: LAB05/js/foundation/foundation.reveal.js
+      ARCHIVING: LAB05/js/foundation/foundation.clearing.js
+      ARCHIVING: LAB05/js/foundation/foundation.equalizer.js
+      ARCHIVING: LAB05/js/foundation/foundation.tab.js
+      ARCHIVING: LAB05/js/foundation/foundation.dropdown.js
+      ARCHIVING: LAB05/js/foundation/foundation.orbit.js
+      ARCHIVING: LAB05/js/foundation/foundation.js
+      ARCHIVING: LAB05/js/foundation/foundation.min.js
+      ARCHIVING: LAB05/js/foundation/foundation.tooltip.js
+      ARCHIVING: LAB05/js/foundation/foundation.offcanvas.js
+      ARCHIVING: LAB05/js/foundation/foundation.interchange.js
+      ARCHIVING: LAB05/js/foundation/foundation.alert.js
+      ARCHIVING: LAB05/js/foundation/foundation.joyride.js
+      ARCHIVING: LAB05/js/foundation/foundation.magellan.js
+      ARCHIVING: LAB05/js/foundation/foundation.accordion.js
+      ARCHIVING: LAB05/js/foundation/foundation.slider.js
+      ARCHIVING: LAB05/js/foundation/foundation.topbar.js
+      ARCHIVING: LAB05/js/foundation/foundation.abide.js
+      ARCHIVING: LAB05/js/main.js
+      ARCHIVING: LAB05/js/vendor/jquery.cookie.js
+      ARCHIVING: LAB05/js/vendor/fastclick.js
+      ARCHIVING: LAB05/js/vendor/modernizr.js
+      ARCHIVING: LAB05/js/vendor/placeholder.js
+      ARCHIVING: LAB05/js/vendor/jquery.js
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+    ACESSING: LAB01/img
+    ACESSING: LAB01/css
+    ACESSING: LAB01/js
+      ARCHIVING: LAB01/README.md
+      ARCHIVING: LAB01/img/google_plus.png
+      ARCHIVING: LAB01/img/facebook.png
+      ARCHIVING: LAB01/img/twitter.png
+      ARCHIVING: LAB01/archive.py
+      ARCHIVING: LAB01/index.html
+      ARCHIVING: LAB01/css/main.css
+      ARCHIVING: LAB01/js/main.js
+      ARCHIVING: LAB01/submit_feedback.html
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+    ACESSING: LAB03/css
+    ACESSING: LAB03/js
+      ARCHIVING: LAB03/README.md
+      ARCHIVING: LAB03/index.html
+      ARCHIVING: LAB03/css/main.css
+      ARCHIVING: LAB03/js/main.js
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+    ACESSING: LAB04/img
+    ACESSING: LAB04/css
+    ACESSING: LAB04/css/images
+    ACESSING: LAB04/js
+      ARCHIVING: LAB04/README.md
+      ARCHIVING: LAB04/img/smart-phone-icon.jpg
+      ARCHIVING: LAB04/img/iphone-512.png
+      ARCHIVING: LAB04/img/firefox.png
+      ARCHIVING: LAB04/img/browsers.jpg
+      ARCHIVING: LAB04/img/google_plus.png
+      ARCHIVING: LAB04/img/facebook.png
+      ARCHIVING: LAB04/img/chrome.png
+      ARCHIVING: LAB04/img/twitter.png
+      ARCHIVING: LAB04/index.html
+      ARCHIVING: LAB04/css/jquery-ui-1.10.4.custom.css
+      ARCHIVING: LAB04/css/images/ui-icons_ededed_256x240.png
+      ARCHIVING: LAB04/css/images/ui-bg_highlight-soft_50_aaaaaa_1x100.png
+      ARCHIVING: LAB04/css/images/ui-icons_ffcf29_256x240.png
+      ARCHIVING: LAB04/css/images/ui-icons_bbbbbb_256x240.png
+      ARCHIVING: LAB04/css/images/ui-bg_glass_55_1c1c1c_1x400.png
+      ARCHIVING: LAB04/css/images/ui-bg_inset-hard_55_ffeb80_1x100.png
+      ARCHIVING: LAB04/css/images/ui-bg_inset-hard_45_cd0a0a_1x100.png
+      ARCHIVING: LAB04/css/images/ui-icons_ffffff_256x240.png
+      ARCHIVING: LAB04/css/images/ui-bg_flat_65_ffffff_40x100.png
+      ARCHIVING: LAB04/css/images/animated-overlay.gif
+      ARCHIVING: LAB04/css/images/ui-bg_highlight-hard_100_f9f9f9_1x100.png
+      ARCHIVING: LAB04/css/images/ui-bg_diagonals-thick_8_333333_40x40.png
+      ARCHIVING: LAB04/css/images/ui-icons_4ca300_256x240.png
+      ARCHIVING: LAB04/css/images/ui-bg_highlight-hard_40_aaaaaa_1x100.png
+      ARCHIVING: LAB04/css/images/ui-icons_222222_256x240.png
+      ARCHIVING: LAB04/css/images/ui-bg_glass_40_111111_1x400.png
+      ARCHIVING: LAB04/css/jquery-ui-1.10.4.custom.min.css
+      ARCHIVING: LAB04/css/main.css
+      ARCHIVING: LAB04/js/main.js
+      ARCHIVING: LAB04/js/jquery-1.10.2.js
+      ARCHIVING: LAB04/js/jquery-ui-1.10.4.custom.min.js
+      ARCHIVING: LAB04/js/jquery-ui-1.10.4.custom.js
+      ARCHIVING: LAB04/submit_feedback.html
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+    ACESSING: LAB02/src
+      ARCHIVING: LAB02/README.md
+      ARCHIVING: LAB02/index.hta
+      ARCHIVING: LAB02/src/style.css
+      ARCHIVING: LAB02/src/index.html
+      ARCHIVING: LAB02/src/script.js
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+    ACESSING: LABXX/img
+    ACESSING: LABXX/css
+    ACESSING: LABXX/css/vendor
+    ACESSING: LABXX/js
+    ACESSING: LABXX/js/foundation
+    ACESSING: LABXX/js/vendor
+      ARCHIVING: LABXX/README.md
+      ARCHIVING: LABXX/img/cal-icon.png
+      ARCHIVING: LABXX/index.html
+      ARCHIVING: LABXX/css/vendor/normalize.css
+      ARCHIVING: LABXX/css/vendor/foundation-datepicker.css
+      ARCHIVING: LABXX/css/vendor/foundation.min.css
+      ARCHIVING: LABXX/css/vendor/foundation.css
+      ARCHIVING: LABXX/css/tasks.css
+      ARCHIVING: LABXX/js/foundation/foundation.reveal.js
+      ARCHIVING: LABXX/js/foundation/foundation.clearing.js
+      ARCHIVING: LABXX/js/foundation/foundation.equalizer.js
+      ARCHIVING: LABXX/js/foundation/foundation.tab.js
+      ARCHIVING: LABXX/js/foundation/foundation.dropdown.js
+      ARCHIVING: LABXX/js/foundation/foundation.orbit.js
+      ARCHIVING: LABXX/js/foundation/foundation.js
+      ARCHIVING: LABXX/js/foundation/foundation.min.js
+      ARCHIVING: LABXX/js/foundation/foundation.tooltip.js
+      ARCHIVING: LABXX/js/foundation/foundation.offcanvas.js
+      ARCHIVING: LABXX/js/foundation/foundation.interchange.js
+      ARCHIVING: LABXX/js/foundation/foundation.alert.js
+      ARCHIVING: LABXX/js/foundation/foundation.joyride.js
+      ARCHIVING: LABXX/js/foundation/foundation.magellan.js
+      ARCHIVING: LABXX/js/foundation/foundation.accordion.js
+      ARCHIVING: LABXX/js/foundation/foundation.topbar.js
+      ARCHIVING: LABXX/js/foundation/foundation.abide.js
+      ARCHIVING: LABXX/js/tasks.js
+      ARCHIVING: LABXX/js/vendor/jquery.cookie.js
+      ARCHIVING: LABXX/js/vendor/fastclick.js
+      ARCHIVING: LABXX/js/vendor/modernizr.js
+      ARCHIVING: LABXX/js/vendor/placeholder.js
+      ARCHIVING: LABXX/js/vendor/foundation-datepicker.js
+      ARCHIVING: LABXX/js/vendor/jquery.js
+      ARCHIVING: LABXX/js/temp-tasks.js
+      ARCHIVING: LABXX/js/old-tasks.js
+      ARCHIVING: LABXX/js/task-object.js
+  ...DONE
+...DONE
