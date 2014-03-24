@@ -1,0 +1,84 @@
+<!--
+  Stand-alone HTML Application using JavaScript
+  @author: Andrew Pomerleau
+  @date:   03/24/2014
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Ceasar Cypher Application</title>
+
+  <!-- STYLES LOADING BAY -->
+  <link type="text/css" rel="stylesheet" href="style.css" />
+
+  <!-- PRE-DOM SCRIPTS LOADING BAY -->
+  <!-- NONE -->
+</head>
+
+<body>
+  <form action="">
+    <table summary="">
+
+      <thead>
+        <tr>
+          <th class="title" colspan="2">Ceasar Cypher Encoder/Decoder</th>
+        </tr>
+        <tr>
+          <td class="directions" colspan="2">Enter the message you would like to encode/decode, and the letter offset to use.
+            <br/>Click the
+            <strong>encode</strong>
+            button to encrypt your message or the
+            <strong>decode</strong>
+            button to decrypt a message you recieved.</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="label">
+            <label for="message">Secret Message:</label>
+          </td>
+          <td>
+            <textarea name="message" id="message" rows="5" cols="30"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            <label for="message-offset">Message Offset:</label>
+          </td>
+          <td>
+            <input type="text" name="message-offset" id="message-offset" size="24" />
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            <input type="button" value="decode" id="decode_button" onclick="return shiftText(true);" name="decode_button" />
+            <input type="button" value="encode" id="encode_button" onclick="return shiftText();" name="encode_button" />
+          </td>
+        </tr>
+        <tr>
+          <td id="error_message" colspan="2"></td>
+        </tr>
+
+        <tr>
+          <td class="label readonly">
+            <label for="newmessage">Result Message:</label>
+          </td>
+          <td>
+            <textarea name="newmessage" id="newmessage" rows="5" cols="30" readonly="readonly"></textarea>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </form>
+
+  <!-- POST-DOM SCRIPTS LOADING BAY -->
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

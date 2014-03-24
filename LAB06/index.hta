@@ -1,0 +1,272 @@
+<!--
+  Stand-alone HTML Application using JavaScript
+  @author: Andrew Pomerleau
+  @date:   03/24/2014
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Ceasar Cypher Application</title>
+
+  <!-- STYLES LOADING BAY -->
+  <style>
+  /**
+   * Style Formatting
+   **/
+   body {
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    color: #333;
+    background-color: #e5e5e5;
+  }
+  table {
+    width: 500px;
+    border: 2px solid #0e0e0e;
+  }
+  thead {
+    border: 2px solid #0e0e0e;
+    background-color: #cecece;
+  }
+  tbody {
+    background-color: #ececee;
+  }
+  td[colspan='2'] input {
+    float: right;
+  }
+  input, textarea {
+    border-radius: 5px;
+  }
+  input[type='button'] {
+    padding: 4px 12px;
+    color: #333;
+    background-color: #aaa;
+  }
+  input[readonly='readonly'], textarea[readonly='readonly'] {
+    color: #333;
+    background-color: #e5e5e5;
+  }
+  /**
+   * Container specific styling
+   **/
+   .title {
+    text-transform: capitalize;
+    color: #0e0e0e;
+  }
+  .directions {
+    font-size: small;
+    color: #555;
+  }
+  .label {
+    font-size: small;
+    text-align: right;
+    color: #363636;
+  }
+  .readonly {
+    font-size: small;
+    text-align: right;
+    color: #636363;
+  }
+  #error_message {
+    font-size: small;
+    padding: 0 5px;
+    color: #f00;
+  }
+  </style>
+
+  <!-- PRE-DOM SCRIPTS LOADING BAY -->
+  <!-- NONE -->
+
+  <!-- HTA APPLICATION DECLARATIONS -->
+  <HTA:APPLICATION ID="objMyCypherer"
+    APPLICATIONNAME="Ceasar Cypher Encoder/Decoder" 
+    SYSMENU="yes" 
+    BORDER="thin" 
+    BORDERSTYLE="normal" 
+    CAPTION="yes" 
+    ICON="" 
+    MAXIMIZEBUTTON="yes" 
+    MINIMIZEBUTTON="yes" 
+    SHOWINTASKBAR="yes" 
+    SCROLL="no" 
+    VERSION="1.0" 
+    WINDOWSTATE="normal" 
+    SINGLEINSTANCE="yes" />
+</head>
+
+<body>
+  <form action="">
+    <table summary="">
+
+      <thead>
+        <tr>
+          <th class="title" colspan="2">Ceasar Cypher Encoder/Decoder</th>
+        </tr>
+        <tr>
+          <td class="directions" colspan="2">Enter the message you would like to encode/decode, and the letter offset to use.
+            <br/>Click the
+            <strong>encode</strong>
+            button to encrypt your message or the
+            <strong>decode</strong>
+            button to decrypt a message you recieved.</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="label">
+            <label for="message">Secret Message:</label>
+          </td>
+          <td>
+            <textarea name="message" id="message" rows="5" cols="30"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            <label for="message-offset">Message Offset:</label>
+          </td>
+          <td>
+            <input type="text" name="message-offset" id="message-offset" size="24" />
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            <input type="button" value="decode" id="decode_button" onclick="return shiftText(true);" name="decode_button" />
+            <input type="button" value="encode" id="encode_button" onclick="return shiftText();" name="encode_button" />
+          </td>
+        </tr>
+        <tr>
+          <td id="error_message" colspan="2"></td>
+        </tr>
+
+        <tr>
+          <td class="label readonly">
+            <label for="newmessage">Result Message:</label>
+          </td>
+          <td>
+            <textarea name="newmessage" id="newmessage" rows="5" cols="30" readonly="readonly"></textarea>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </form>
+
+  <!-- POST-DOM SCRIPTS LOADING BAY -->
+  <script type="text/javascript">
+  var ALPHA_PATTERN = /[a-z]/,
+    NUMERIC_PATTERN = /[0-9]/,
+    A_CODE = 97,
+    ZERO_CODE = 48,
+    NUMERIC_DIGITS = 10,
+    LOWER_LETTERS = 26;
+
+  /**
+   * Removes all currently displayed error messages.
+   *
+   **/
+
+  function clearErrors() {
+    document.getElementById("error_message").innerHTML = "";
+  }
+
+  /**
+   * Populates error_message field to display feedback to user on form
+   * validation.
+   *
+   * @param message error message to display to user.
+   *
+   **/
+
+  function displayError(message) {
+    document.getElementById("error_message").innerHTML += "<p>" + message + "</p>";
+  }
+
+  /**
+   * Checks that all required form fields are filled out, and displays
+   * user feedback if actions are required.
+   *
+   **/
+
+  function formIsValid() {
+    var message, offset;
+    message = document.getElementById("message").value;
+    message = message.trim();
+    offset = document.getElementById("message-offset").value;
+    offset = offset.trim();
+
+    clearErrors();
+
+    if (message.length <= 0) {
+      displayError("You must provide a message to be encrypted/decrypted to continue.");
+      return false;
+    }
+
+    if (isNaN(offset) || offset.length <= 0) {
+      displayError("You must provide an integer offset to encode/decode the message by to continue.");
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Encodes and Decodes using a simple Ceasar Cypher character shift.
+   * @note Reworked from demo-script to also encode numbers, and leave punctuation.
+   *
+   * @param decoding boolean flag to decode, undefined or false to encode.
+   *
+   **/
+
+  function shiftText(decoding) {
+    var message, shiftby, newmessage, i, shiftedcode;
+    if (formIsValid()) {
+      message = document.getElementById("message").value;
+      message = message.trim();
+      message = message.toLowerCase();
+      //  message = message.replace(/[^a-zA-z\s]/g, "");
+
+      shiftby = document.getElementById("message-offset").value;
+      shiftby = shiftby.trim();
+      shiftby = parseInt(shiftby);
+
+      if (decoding) {
+        shiftby = shiftby * -1;
+      }
+
+      newmessage = "";
+
+      for (i = 0; i < message.length; i += 1) {
+        if (ALPHA_PATTERN.test(message.charAt(i))) {
+          shiftedcode = (message.charCodeAt(i) - A_CODE + shiftby) % LOWER_LETTERS;
+          if (shiftedcode < 0) shiftedcode = LOWER_LETTERS + shiftedcode;
+          shiftedcode += A_CODE;
+
+          newmessage += String.fromCharCode(shiftedcode);
+        } else if (NUMERIC_PATTERN.test(message.charAt(i))) {
+          shiftedcode = (message.charCodeAt(i) - ZERO_CODE + shiftby) % NUMERIC_DIGITS;
+          if (shiftedcode < 0) shiftedcode = NUMERIC_DIGITS + shiftedcode;
+          shiftedcode += ZERO_CODE;
+
+          newmessage += String.fromCharCode(shiftedcode);
+        } else {
+          newmessage += message.charAt(i);
+        }
+      }
+
+      document.getElementById("newmessage").value = newmessage;
+
+      return true;
+    }
+
+    return false;
+  }
+
+  // resize the window to the size of the form for application view
+  window.resizeTo(530, 480);
+  </script>
+</body>
+
+</html>

@@ -1,7 +1,15 @@
-LAST ARCHIVE: 2014-03-23
+LAST ARCHIVE: 2014-03-24
 ========================
 STARTING ARCHIVE PROCESS...
   RETRIEVING PROJECT DIRECTORIES...
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+    ACESSING: LAB06/src
+      ARCHIVING: LAB06/README.md
+      ARCHIVING: LAB06/index.hta
+      ARCHIVING: LAB06/src/style.css
+      ARCHIVING: LAB06/src/index.html
+      ARCHIVING: LAB06/src/script.js
   ...DONE
   RETRIEVING PROJECT DIRECTORIES...
     ACESSING: LAB05/css
@@ -48,7 +56,6 @@ STARTING ARCHIVE PROCESS...
       ARCHIVING: LAB01/img/google_plus.png
       ARCHIVING: LAB01/img/facebook.png
       ARCHIVING: LAB01/img/twitter.png
-      ARCHIVING: LAB01/archive.py
       ARCHIVING: LAB01/index.html
       ARCHIVING: LAB01/css/main.css
       ARCHIVING: LAB01/js/main.js

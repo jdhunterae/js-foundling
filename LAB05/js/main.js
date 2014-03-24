@@ -125,6 +125,7 @@ function newGame() {
 
       while (response.length <= 0) {
         response = prompt("Please enter our hero's name.", "Steve");
+        $("output-console").html("");
       }
 
       player = Creature(PLAYER, response);
