@@ -27,3 +27,8 @@
   width: 14px;
   height: 14px;
 }
+.wt-logo {
+  position: relative;
+  top: -5px;
+  height: 30px;
+}

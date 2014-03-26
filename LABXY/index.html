@@ -1,7 +1,7 @@
 <!--
-	HTML/JavaScript Application
-	@author: Andrew Pomerleau
-	@date:   03/21/2014
+  HTML/JavaScript Application
+  @author: Andrew Pomerleau
+  @date:   03/21/2014
 -->
 
 <!doctype html>
@@ -26,7 +26,10 @@
   <!-- HEADLINER -->
   <div class="row">
     <div class="large-12 columns">
-      <h1>Welcome to WebTasks</h1>
+      <!-- <h1>Welcome to WebTasks</h1> -->
+      <div id="wt-header">
+        <img id="wt-logo" src="img/wt-logo.png" alt="WebTasks logo" />
+      </div>
     </div>
   </div>
 
@@ -34,7 +37,8 @@
   <div class="row">
     <div class="large-12 columns">
       <div class="panel callout">
-        <h3>We're stoked that you want to try WebTasks!</h3>
+        <h3>We're stoked that you want to try
+          <img class="wt-logo" src="img/wt-logo.png" alt="WebTaks Logo" />!</h3>
         <p>To get going, we've loaded a few sample tasks into your task list. This app uses jQuery, JSON, and HTML5 localStorage to store and manage your tasks.</p>
         <p>Once you've had a look around, feel free to delete our sample tasks and create a few of your own using the form on the right-hand side of the page.</p>
       </div>
@@ -84,35 +88,35 @@
       <div id="form-panel" class="panel">
         <h5 id="form-header">Add a New Task:</h5>
 
-        <form action="" id="task-form" data-abide>
-          <input type="hidden" name="entry-id" id="entry-id" value="0" />
+        <form action="" id="entry-form" data-abide>
+          <input type="hidden" name="entry-id" id="entry-id" value="-1" />
 
           <div class="row">
             <div class="large-12 columns">
-              <label for="task-name">Task Name
+              <label for="entry-name">Task Name
                 <small>required</small>
               </label>
-              <input type="text" name="task-name" id="task-name" placeholder="Task name..." required />
+              <input type="text" name="entry-name" id="entry-name" placeholder="Task name..." required />
             </div>
           </div>
 
           <div class="row">
             <div class="large-12 columns">
-              <label for="task-description">Task Description
+              <label for="entry-description">Task Description
                 <small>required</small>
               </label>
-              <textarea name="task-description" id="task-description" placeholder="Task description..." required></textarea>
+              <textarea name="entry-description" id="entry-description" placeholder="Task description..." required></textarea>
             </div>
           </div>
 
           <div class="row">
             <div class="large-12 columns">
               <div class="row collapse" id="duedate-wrapper">
-                <label for="task-duedate">Task Due Date
+                <label for="entry-duedate">Task Due Date
                   <small>required</small>
                 </label>
                 <div class="large-9 columns">
-                  <input type="text" name="task-duedate" id="task-duedate" required readonly />
+                  <input type="text" name="entry-duedate" id="entry-duedate" required readonly />
                 </div>
                 <div class="large-3 columns">
                   <span class="postfix">
@@ -125,10 +129,10 @@
 
           <div class="row">
             <div class="large-12 columns">
-              <label for="task-status">Task Status
+              <label for="entry-status">Task Status
                 <small>required</small>
               </label>
-              <select name="task-status" id="task-status" required>
+              <select name="entry-status" id="entry-status" required>
                 <!-- STATUS OPTIONS GO HERE -->
               </select>
             </div>
@@ -136,8 +140,8 @@
 
           <div class="row">
             <div class="large-12 columns text-right">
-              <input type="reset" value="clear" id="op-task-discard" class="button small radius secondary" name="op-task-discard" />
-              <input type="submit" value="save" id="op-task-save" class="button small radius" name="op-task-save" />
+              <input type="reset" value="clear" id="op-entry-discard" class="button small radius secondary" name="op-entry-discard" />
+              <input type="submit" value="save" id="op-entry-save" class="button small radius" name="op-entry-save" />
             </div>
           </div>
         </form>
@@ -151,6 +155,7 @@
   <script type="text/javascript" src="js/foundation/foundation.abide.js"></script>
   <script type="text/javascript" src="js/vendor/foundation-datepicker.js"></script>
   <script type="text/javascript" src="js/task-object.js"></script>
+  <script type="text/javascript" src="js/task-manager.js"></script>
   <script type="text/javascript" src="js/tasks.js"></script>
 </body>
 
