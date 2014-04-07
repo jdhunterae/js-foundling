@@ -8,3 +8,4 @@ LABXX: Final Project
 A project to utilize practices gained through the class.
 Includes:
 - localStorage of data for on-device application usage.
+- qUnit testing for test-driven development

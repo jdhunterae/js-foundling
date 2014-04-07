@@ -5,23 +5,187 @@
  **********************************************************************/
 
 test("Task manager - Load all", function() {
-  var data = [],
-    tasks = [],
-    pattern = /TASKS:task-/,
-    numRecords = 0,
+  var manager = new TaskManager(),
+    tasks = manager.loadAll(),
+    numRecords = 4;
+
+  equal(tasks.length, numRecords, "Length of loaded tasks should be 4.");
+});
+
+test("Task manager - Store all", function() {
+  var manager = new TaskManager(),
+    tasks = manager.loadAll(),
+    numRecords = 4;
+
+  equal(tasks.length, numRecords, "Length of loaded tasks should be 4.");
+
+  purgeStorage();
+  equal(window.localStorage.length, 0, "After purging, localStorage should be empty.");
+
+  manager.storeAll();
+
+  equal(window.localStorage.length, numRecords, "After storing tasks, localStorage should have four records again.");
+});
+
+test("Task manager - Sort tasks by id", function() {
+  var manager = new TaskManager(),
+    tasks = manager.loadAll(),
     i;
 
-  for (i in window.localStorage) {
-    if (pattern.test(i)) {
-      data.push(JSON.parse(window.localStorage.getItem(i)));
-      numRecords += 1;
+  tasks = manager.sort(1);
+
+  // ascending
+  for (i = 0; i < tasks.length; i += 1) {
+    if (i === 0) {
+      ok(tasks[0].id === tasks[i].id, "First task is the same as lowest id task.");
+    } else {
+      ok(tasks[0].id < tasks[i].id, "First task id is lower than following task ids.");
     }
   }
 
-  tasks = new Array(data.length);
+  tasks = manager.sort(-1);
 
-  for (i = 0; i < data.length; i += 1) {
+  // descending
+  for (i = 0; i < tasks.length; i += 1) {
+    if (i === 0) {
+      ok(tasks[0].id === tasks[i].id, "First task is the same as greatest id task.");
+    } else {
+      ok(tasks[0].id > tasks[i].id, "First task id is greater than following task ids.");
+    }
+  }
+});
+
+test("Task manager - Sort tasks by status", function() {
+  var manager = new TaskManager(),
+    tasks = manager.loadAll(),
+    i;
+
+  tasks = manager.sort(4);
+
+  // ascending
+  for (i = 0; i < tasks.length; i += 1) {
+    if (i === 0) {
+      ok(tasks[0].status === tasks[i].status, "First task is the same as lowest status task.");
+    } else {
+      ok(tasks[0].status < tasks[i].status, "First task status is lower than following task statuses.");
+    }
   }
 
-  equal(tasks.length, numRecords, "Length of loaded tasks should be 4.");
+  tasks = manager.sort(-4);
+
+  // descending
+  for (i = 0; i < tasks.length; i += 1) {
+    if (i === 0) {
+      ok(tasks[0].status === tasks[i].status, "First task is the same as greatest status task.");
+    } else {
+      ok(tasks[0].status > tasks[i].status, "First task status is greater than following task statuses.");
+    }
+  }
+});
+
+test("Task manager - Sort tasks by name", function() {
+  var manager = new TaskManager(),
+    tasks = manager.loadAll(),
+    i;
+
+  tasks = manager.sort(2);
+
+  // ascending
+  for (i = 0; i < tasks.length; i += 1) {
+    if (i === 0) {
+      ok(tasks[0].name === tasks[i].name, "First task is the same as lowest name task.");
+    } else {
+      ok(tasks[0].name < tasks[i].name, "First task name is lower than following task names.");
+    }
+  }
+
+  tasks = manager.sort(-2);
+
+  // descending
+  for (i = 0; i < tasks.length; i += 1) {
+    if (i === 0) {
+      ok(tasks[0].name === tasks[i].name, "First task is the same as greatest name task.");
+    } else {
+      ok(tasks[0].name > tasks[i].name, "First task name is greater than following task names.");
+    }
+  }
+});
+
+test("Task manager - Sort tasks by duedate", function() {
+  var manager = new TaskManager(),
+    tasks = manager.loadAll(),
+    i;
+
+  tasks = manager.sort(3);
+
+  // ascending
+  for (i = 0; i < tasks.length; i += 1) {
+    if (i === 0) {
+      ok(tasks[0].duedate === tasks[i].duedate, "First task is the same as lowest duedate task.");
+    } else {
+      ok(tasks[0].duedate < tasks[i].duedate, "First task duedate is lower than following task duedates.");
+    }
+  }
+
+  tasks = manager.sort(-3);
+
+  // descending
+  for (i = 0; i < tasks.length; i += 1) {
+    if (i === 0) {
+      ok(tasks[0].duedate === tasks[i].duedate, "First task is the same as greatest duedate task.");
+    } else {
+      ok(tasks[0].duedate > tasks[i].duedate, "First task duedate is greater than following task duedates.");
+    }
+  }
+});
+
+test("Task manager - Filter out all completed tasks", function() {
+  var manager = new TaskManager(),
+    tasks = manager.loadAll(),
+    numRecords = 4,
+    i;
+
+  equal(tasks.length, numRecords, "Loaded all 4 tasks to begin with.");
+
+  tasks = manager.filter(2);
+  console.log(tasks);
+  equal(tasks.length, numRecords - 1, "Filtered out 1 completed task.");
+
+  for (i = 0; i < tasks.length; i += 1) {
+    ok(tasks[i].status !== 2, "Task status is not completed");
+  }
+});
+
+test("Task manager - Filter out all not started tasks", function() {
+  var manager = new TaskManager(),
+    tasks = manager.loadAll(),
+    numRecords = 4,
+    i;
+
+  equal(tasks.length, numRecords, "Loaded all 4 tasks to begin with.");
+
+  tasks = manager.filter(0);
+  console.log(tasks);
+  equal(tasks.length, numRecords - 1, "Filtered out 1 not started task.");
+
+  for (i = 0; i < tasks.length; i += 1) {
+    ok(tasks[i].status !== 0, "Task status is not completed");
+  }
+});
+
+test("Task manager - Filter out all not started and completed tasks", function() {
+  var manager = new TaskManager(),
+    tasks = manager.loadAll(),
+    numRecords = 4,
+    i;
+
+  equal(tasks.length, numRecords, "Loaded all 4 tasks to begin with.");
+
+  tasks = manager.filter([0, 2]);
+  console.log(tasks);
+  equal(tasks.length, numRecords - 2, "Filtered out 1 not started and 1 completed task.");
+
+  for (i = 0; i < tasks.length; i += 1) {
+    ok(tasks[i].status !== 0 && tasks[i].status !== 2, "Task status is not completed");
+  }
 });

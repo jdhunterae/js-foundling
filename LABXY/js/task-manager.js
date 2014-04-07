@@ -8,9 +8,16 @@ var DEVEL = true,
 
 function TaskManager() {
   STORAGE = window.localStorage;
+  SORT_KEYS = ["", "id", "name", "duedate", "status"];
+  SORT_BY_ID = 1;
+  SORT_BY_NAME = 2;
+  SORT_BY_DUEDATE = 3;
+  SORT_BY_STATUS = 4;
 
   this.tasks = [];
   this.selected = new Task();
+  this.sortIndex = SORT_BY_ID;
+  this.filters = [];
 
   this.selectTask = function(task_id) {
     if (this.selected.id === task_id) {
@@ -38,107 +45,123 @@ function TaskManager() {
     this.clearForm();
   };
 
-  this.display = function() {};
+  this.clearDisplay = function() {
+    $("#task-list").html("");
+  };
+
+  this.display = function() {
+    var i;
+    this.sort();
+
+    this.clearDisplay();
+
+    for (i = 0; i < this.tasks.length; i += 1) {
+      this.tasks[i].display();
+    }
+  };
 
   this.loadSelected = function() {};
   this.storeSelected = function() {};
 
   this.loadAll = function() {
     var pattern = /TASKS:task-/,
-      i, j;
+      i;
     this.tasks = [];
 
     for (i in STORAGE) {
       if (pattern.test(i)) {
-        this.tasks[j] = new Task();
-        this.tasks[j].parse(STORAGE.getItem(i));
+        this.tasks.push(new Task(STORAGE.getItem(i)));
       }
     }
 
-    this.display();
+    return this.tasks;
   };
   this.storeAll = function() {
-    var task;
-    for (task in this.tasks) {
-      task.store();
+    var i;
+    for (i in this.tasks) {
+      this.tasks[i].store();
     }
   };
-}
 
+  this.changeSort = function(newIndex) {
+    switch (Math.abs(newIndex)) {
+      case SORT_BY_STATUS:
+        this.sortIndex = SORT_BY_STATUS;
+        break;
+      case SORT_BY_DUEDATE:
+        this.sortIndex = SORT_BY_DUEDATE;
+        break;
+      case SORT_BY_NAME:
+        this.sortIndex = SORT_BY_NAME;
+        break;
+      case SORT_BY_ID:
+      default:
+        this.sortIndex = SORT_BY_ID;
+        break;
+    }
 
+    if (newIndex < 0) {
+      this.sortIndex = this.sortIndex * -1;
+    }
+  };
+  this.sort = function(param) {
+    var sorted = this.filter(),
+      msg, key;
 
+    if (param !== undefined) {
+      this.changeSort(param);
+    }
 
+    key = SORT_KEYS[Math.abs(this.sortIndex)];
+    sorted.sort(function(a, b) {
+      return ((a[key] > b[key]) ? 1 : ((a[key] < b[key]) ? -1 : 0));
+    });
 
+    if (this.sortIndex < 0) {
+      sorted = sorted.reverse();
+    }
 
-if (DEVEL) {
-  var task, tasks;
+    this.tasks = sorted;
+    return this.tasks;
+  };
 
-  if (RUN_INIT_TEST) {
-    console.log("Checking task's initialization functionality.");
-    task = new Task();
-    console.log(JSON.stringify(task));
-    task = new Task("0", "New Task");
-    console.log(JSON.stringify(task));
-    task = new Task("0", "New Task", "A task's description of things to do.");
-    console.log(JSON.stringify(task));
-    task = new Task("0", "New Task", "A task's description of things to do.", "02/02/2014");
-    console.log(JSON.stringify(task));
-    task = new Task("0", "New Task", "A task's description of things to do.", "02/02/2014", "1");
-    console.log(JSON.stringify(task));
-  }
-  if (RUN_STORE_TEST) {
-    console.log("Checking task's storage functionality.");
-    task = new Task("0", "Zeroth Task", "A task's description of things to do.", "02/02/2014", "1");
-    task.store();
-    task = new Task("1", "First Task", "Get a new job.", "05/15/2014", "1");
-    task.store();
-    task = new Task("2", "Second Task", "Finish task object coding.", "03/22/2014", "1");
-    task.store();
-    task = new Task("3", "Third Task", "Finish submitting tax documents.", "04/15/2014", "2");
-    task.store();
-  }
-  if (RUN_LOAD_TEST) {
-    console.log("Checking task's retrieval functionality.");
-    task = new Task(0);
-    task.load();
-    task.id += 1;
-    task.load();
-    task.id += 1;
-    task.load();
-    task.id += 1;
-    task.load();
-  }
-  if (RUN_PARSE_JSON_TEST) {
-    var pattern = /TASKS:task-/,
-      i, j;
-    tasks = [];
+  this.filter = function(param) {
+    var filtered = [],
+      i;
 
-    console.log("Checking task's json parsing functionality.");
-    for (i in window.localStorage) {
-      if (pattern.test(i)) {
-        tasks[j] = new Task();
-        tasks[j].parse(window.localStorage.getItem(i));
-
-        tasks[j].display();
+    if (param !== undefined) {
+      if (typeof param === typeof[]) {
+        this.setFilter(param);
+      } else {
+        this.toggleFilter(param);
       }
     }
-  }
-  if (RUN_DISPLAY_TEST) {
-    var i;
-    console.log("Checking task's display functionality.");
-    tasks = [];
-    for (i = 0; i < 4; i += 1) {
-      tasks[i] = new Task(i);
-      tasks[i].load();
-      tasks[i].display();
+
+    this.tasks = this.loadAll();
+
+    for (i = 0; i < this.tasks.length; i += 1) {
+      if (this.filters.indexOf(this.tasks[i].status) === -1) {
+        filtered.push(this.tasks[i]);
+      }
     }
-  }
-  if (RUN_FILL_FORM_TEST) {
-    console.log("Checking task's form propagation functionality.");
 
-    task = new Task(1);
-    task.load();
+    this.tasks = filtered;
 
-    task.fillForm();
-  }
+    return this.tasks;
+  };
+
+  this.setFilter = function(options) {
+    var i;
+    this.filters = [];
+    for (i = 0; i < options.length; i += 1) {
+      this.filters.push(options[i]);
+    }
+  };
+  this.toggleFilter = function(option) {
+    if (this.filters.indexOf(option) !== -1) {
+      this.filters.pop(this.filters.indexOf(option));
+    } else {
+      this.filters.push(option);
+    }
+  };
 }

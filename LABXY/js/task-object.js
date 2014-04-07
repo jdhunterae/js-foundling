@@ -9,7 +9,11 @@ function Task(obj) {
     PREFIX = "TASKS:",
     STATUSES = ["Not Started", "In Progress", "Completed"];
 
+  if (typeof obj === typeof "a string") {
+    obj = JSON.parse(obj);
+  }
   if (!obj) obj = {};
+
   this.id = parseInt(obj.id, 10) || 0;
   this.name = obj.name;
   this.description = obj.description;
@@ -18,15 +22,15 @@ function Task(obj) {
 
   this.store = function() {
     var json = JSON.stringify(this);
-    console.log(json);
+    // console.log(json);
     STORAGE.setItem(PREFIX + "task-" + this.id, json);
   };
   this.load = function() {
     var json = JSON.stringify(this),
       data, prop;
-    console.log("Before load: " + json);
+    // console.log("Before load: " + json);
     if (isNaN(this.id)) {
-      console.log("no id to load task by.");
+      // console.log("no id to load task by.");
       return;
     }
 
@@ -40,14 +44,14 @@ function Task(obj) {
     }
 
     json = JSON.stringify(this);
-    console.log("After load: " + json);
+    // console.log("After load: " + json);
   };
 
   this.parse = function(data) {
     var json = JSON.stringify(this),
       prop;
 
-    console.log("Before load: " + json);
+    // console.log("Before load: " + json);
 
     data = JSON.parse(data);
 
@@ -58,7 +62,7 @@ function Task(obj) {
     }
 
     json = JSON.stringify(this);
-    console.log("After load: " + json);
+    //  console.log("After load: " + json);
   };
   this.getStatus = function() {
     if (this.status < 0 || this.status >= STATUSES.length) {
