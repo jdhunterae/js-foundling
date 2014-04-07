@@ -1,4 +1,4 @@
-LAST ARCHIVE: 2014-03-24
+LAST ARCHIVE: 2014-04-02
 ========================
 STARTING ARCHIVE PROCESS...
   RETRIEVING PROJECT DIRECTORIES...
@@ -68,6 +68,11 @@ STARTING ARCHIVE PROCESS...
       ARCHIVING: LAB03/index.html
       ARCHIVING: LAB03/css/main.css
       ARCHIVING: LAB03/js/main.js
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+      ARCHIVING: LABM2/README.md
+      ARCHIVING: LABM2/debug.js
+      ARCHIVING: LABM2/broken.js
   ...DONE
   RETRIEVING PROJECT DIRECTORIES...
     ACESSING: LAB04/img
@@ -159,5 +164,54 @@ STARTING ARCHIVE PROCESS...
       ARCHIVING: LABXX/js/temp-tasks.js
       ARCHIVING: LABXX/js/old-tasks.js
       ARCHIVING: LABXX/js/task-object.js
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+    ACESSING: LABXY/img
+    ACESSING: LABXY/css
+    ACESSING: LABXY/css/vendor
+    ACESSING: LABXY/js
+    ACESSING: LABXY/js/foundation
+    ACESSING: LABXY/js/vendor
+      ARCHIVING: LABXY/README.md
+      ARCHIVING: LABXY/img/wt-logo.png
+      ARCHIVING: LABXY/img/wt-divider.png
+      ARCHIVING: LABXY/img/cal-icon.png
+      ARCHIVING: LABXY/test.html
+      ARCHIVING: LABXY/index.html
+      ARCHIVING: LABXY/css/vendor/normalize.css
+      ARCHIVING: LABXY/css/vendor/foundation-datepicker.css
+      ARCHIVING: LABXY/css/vendor/foundation.min.css
+      ARCHIVING: LABXY/css/vendor/foundation.css
+      ARCHIVING: LABXY/css/vendor/qunit-1.14.0.css
+      ARCHIVING: LABXY/css/tasks.css
+      ARCHIVING: LABXY/js/foundation/foundation.reveal.js
+      ARCHIVING: LABXY/js/foundation/foundation.clearing.js
+      ARCHIVING: LABXY/js/foundation/foundation.equalizer.js
+      ARCHIVING: LABXY/js/foundation/foundation.tab.js
+      ARCHIVING: LABXY/js/foundation/foundation.dropdown.js
+      ARCHIVING: LABXY/js/foundation/foundation.orbit.js
+      ARCHIVING: LABXY/js/foundation/foundation.js
+      ARCHIVING: LABXY/js/foundation/foundation.min.js
+      ARCHIVING: LABXY/js/foundation/foundation.tooltip.js
+      ARCHIVING: LABXY/js/foundation/foundation.offcanvas.js
+      ARCHIVING: LABXY/js/foundation/foundation.interchange.js
+      ARCHIVING: LABXY/js/foundation/foundation.alert.js
+      ARCHIVING: LABXY/js/foundation/foundation.joyride.js
+      ARCHIVING: LABXY/js/foundation/foundation.magellan.js
+      ARCHIVING: LABXY/js/foundation/foundation.accordion.js
+      ARCHIVING: LABXY/js/foundation/foundation.topbar.js
+      ARCHIVING: LABXY/js/foundation/foundation.abide.js
+      ARCHIVING: LABXY/js/tasks.js
+      ARCHIVING: LABXY/js/task-manager.js
+      ARCHIVING: LABXY/js/vendor/jquery.cookie.js
+      ARCHIVING: LABXY/js/vendor/fastclick.js
+      ARCHIVING: LABXY/js/vendor/qunit-1.14.0.js
+      ARCHIVING: LABXY/js/vendor/modernizr.js
+      ARCHIVING: LABXY/js/vendor/placeholder.js
+      ARCHIVING: LABXY/js/vendor/foundation-datepicker.js
+      ARCHIVING: LABXY/js/vendor/jquery.js
+      ARCHIVING: LABXY/js/task-manager-test.js
+      ARCHIVING: LABXY/js/task-object.js
+      ARCHIVING: LABXY/js/task-object-test.js
   ...DONE
 ...DONE

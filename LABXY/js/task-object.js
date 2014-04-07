@@ -4,16 +4,17 @@
  ***   @date:   03/24/2014                                          ***
  **********************************************************************/
 
-function Task(id, name, description, duedate, status) {
+function Task(obj) {
   var STORAGE = window.localStorage,
     PREFIX = "TASKS:",
     STATUSES = ["Not Started", "In Progress", "Completed"];
 
-  this.id = parseInt(id, 10);
-  this.name = name;
-  this.description = description;
-  this.duedate = duedate;
-  this.status = parseInt(status, 10);
+  if (!obj) obj = {};
+  this.id = parseInt(obj.id, 10) || 0;
+  this.name = obj.name;
+  this.description = obj.description;
+  this.duedate = obj.duedate;
+  this.status = parseInt(obj.status, 10) || 0;
 
   this.store = function() {
     var json = JSON.stringify(this);
