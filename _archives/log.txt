@@ -1,4 +1,4 @@
-LAST ARCHIVE: 2014-04-02
+LAST ARCHIVE: 2014-04-07
 ========================
 STARTING ARCHIVE PROCESS...
   RETRIEVING PROJECT DIRECTORIES...
@@ -201,7 +201,7 @@ STARTING ARCHIVE PROCESS...
       ARCHIVING: LABXY/js/foundation/foundation.accordion.js
       ARCHIVING: LABXY/js/foundation/foundation.topbar.js
       ARCHIVING: LABXY/js/foundation/foundation.abide.js
-      ARCHIVING: LABXY/js/tasks.js
+      ARCHIVING: LABXY/js/scripts.js
       ARCHIVING: LABXY/js/task-manager.js
       ARCHIVING: LABXY/js/vendor/jquery.cookie.js
       ARCHIVING: LABXY/js/vendor/fastclick.js

@@ -1,10 +1,8 @@
-var DEVEL = true,
-  RUN_INIT_TEST = false,
-  RUN_STORE_TEST = false,
-  RUN_LOAD_TEST = false,
-  RUN_PARSE_JSON_TEST = true,
-  RUN_DISPLAY_TEST = false,
-  RUN_FILL_FORM_TEST = true;
+/**********************************************************************
+ ***   Task Manager Object file for HTML/JavaScript Application     ***
+ ***   @author: Andrew Pomerleau                                    ***
+ ***   @date:   03/24/2014                                          ***
+ **********************************************************************/
 
 function TaskManager() {
   STORAGE = window.localStorage;
