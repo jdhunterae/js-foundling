@@ -3,7 +3,7 @@
  ***   @author: Andrew Pomerleau                                    ***
  ***   @date:   03/24/2014                                          ***
  **********************************************************************/
-
+module("Task Manager Object");
 test("Task manager - Load all", function() {
   var manager = new TaskManager(),
     tasks = manager.loadAll(),

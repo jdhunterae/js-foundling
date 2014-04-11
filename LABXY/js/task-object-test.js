@@ -39,7 +39,7 @@ function purgeStorage() {
     window.localStorage.removeItem(removal[dex]);
   }
 }
-
+module("Task Object");
 test("Task object creation - Empty", function() {
   var task = new Task(),
     empty = {
