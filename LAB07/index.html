@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ajax Testing</title>
+</head>
+
+<body>
+  <div id="notajaxbox">
+    <h3>This is some filler</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, reiciendis voluptas fugit saepe alias accusamus eius unde debitis ullam quibusdam.</p>
+    <p>The ajax.txt should load after clicking this link
+      <span onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'" onclick="ajaxcall();">here</span>.
+    </p>
+    <p>The ajax.php should load after clicking this link
+      <span onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'" onclick="getajax();">here</span>.
+    </p>
+  </div>
+  <div>
+    <h3>Ajax (txt) response block:</h3>
+    <p id="ajaxbox"></p>
+  </div>
+  <div>
+    <h3>Ajax (php) response block:</h3>
+    <p id="ajaxbox-php"></p>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
