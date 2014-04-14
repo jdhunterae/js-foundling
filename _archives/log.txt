@@ -1,4 +1,4 @@
-LAST ARCHIVE: 2014-04-07
+LAST ARCHIVE: 2014-04-14
 ========================
 STARTING ARCHIVE PROCESS...
   RETRIEVING PROJECT DIRECTORIES...
@@ -60,6 +60,16 @@ STARTING ARCHIVE PROCESS...
       ARCHIVING: LAB01/css/main.css
       ARCHIVING: LAB01/js/main.js
       ARCHIVING: LAB01/submit_feedback.html
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+    ACESSING: LAB07/txt
+    ACESSING: LAB07/php
+    ACESSING: LAB07/js
+      ARCHIVING: LAB07/README.md
+      ARCHIVING: LAB07/txt/ajax_test.txt
+      ARCHIVING: LAB07/index.html
+      ARCHIVING: LAB07/php/test.php
+      ARCHIVING: LAB07/js/script.js
   ...DONE
   RETRIEVING PROJECT DIRECTORIES...
     ACESSING: LAB03/css
@@ -210,8 +220,10 @@ STARTING ARCHIVE PROCESS...
       ARCHIVING: LABXY/js/vendor/placeholder.js
       ARCHIVING: LABXY/js/vendor/foundation-datepicker.js
       ARCHIVING: LABXY/js/vendor/jquery.js
+      ARCHIVING: LABXY/js/task-form.js
       ARCHIVING: LABXY/js/task-manager-test.js
       ARCHIVING: LABXY/js/task-object.js
+      ARCHIVING: LABXY/js/task-form-test.js
       ARCHIVING: LABXY/js/task-object-test.js
   ...DONE
 ...DONE
