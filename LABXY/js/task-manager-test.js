@@ -4,7 +4,7 @@
  ***   @date:   03/24/2014                                          ***
  **********************************************************************/
 module("Task Manager Object");
-test("Task manager - Load all", function() {
+test("Load all", function() {
   var manager = new TaskManager(),
     tasks = manager.loadAll(),
     numRecords = 4;
@@ -12,7 +12,7 @@ test("Task manager - Load all", function() {
   equal(tasks.length, numRecords, "Length of loaded tasks should be 4.");
 });
 
-test("Task manager - Store all", function() {
+test("Store all", function() {
   var manager = new TaskManager(),
     tasks = manager.loadAll(),
     numRecords = 4;
@@ -27,12 +27,15 @@ test("Task manager - Store all", function() {
   equal(window.localStorage.length, numRecords, "After storing tasks, localStorage should have four records again.");
 });
 
-test("Task manager - Sort tasks by id", function() {
+test("Sort tasks by id", function() {
   var manager = new TaskManager(),
     tasks = manager.loadAll(),
     i;
 
+  equal(tasks.length, 4, "All tasks present and accounted for after load.");
+
   tasks = manager.sort(1);
+  equal(tasks.length, 4, "All tasks present and accounted for after sort.");
 
   // ascending
   for (i = 0; i < tasks.length; i += 1) {
@@ -44,6 +47,7 @@ test("Task manager - Sort tasks by id", function() {
   }
 
   tasks = manager.sort(-1);
+  equal(tasks.length, 4, "All tasks present and accounted for after sort.");
 
   // descending
   for (i = 0; i < tasks.length; i += 1) {
@@ -55,12 +59,15 @@ test("Task manager - Sort tasks by id", function() {
   }
 });
 
-test("Task manager - Sort tasks by status", function() {
+test("Sort tasks by status", function() {
   var manager = new TaskManager(),
     tasks = manager.loadAll(),
     i;
 
+  equal(tasks.length, 4, "All tasks present and accounted for after load.");
+
   tasks = manager.sort(4);
+  equal(tasks.length, 4, "All tasks present and accounted for after sort.");
 
   // ascending
   for (i = 0; i < tasks.length; i += 1) {
@@ -72,7 +79,7 @@ test("Task manager - Sort tasks by status", function() {
   }
 
   tasks = manager.sort(-4);
-
+  equal(tasks.length, 4, "All tasks present and accounted for after sort.");
   // descending
   for (i = 0; i < tasks.length; i += 1) {
     if (i === 0) {
@@ -83,12 +90,15 @@ test("Task manager - Sort tasks by status", function() {
   }
 });
 
-test("Task manager - Sort tasks by name", function() {
+test("Sort tasks by name", function() {
   var manager = new TaskManager(),
     tasks = manager.loadAll(),
     i;
 
+  equal(tasks.length, 4, "All tasks present and accounted for after load.");
+
   tasks = manager.sort(2);
+  equal(tasks.length, 4, "All tasks present and accounted for after sort.");
 
   // ascending
   for (i = 0; i < tasks.length; i += 1) {
@@ -100,6 +110,7 @@ test("Task manager - Sort tasks by name", function() {
   }
 
   tasks = manager.sort(-2);
+  equal(tasks.length, 4, "All tasks present and accounted for after sort.");
 
   // descending
   for (i = 0; i < tasks.length; i += 1) {
@@ -111,12 +122,15 @@ test("Task manager - Sort tasks by name", function() {
   }
 });
 
-test("Task manager - Sort tasks by duedate", function() {
+test("Sort tasks by duedate", function() {
   var manager = new TaskManager(),
     tasks = manager.loadAll(),
     i;
 
+  equal(tasks.length, 4, "All tasks present and accounted for after load.");
+
   tasks = manager.sort(3);
+  equal(tasks.length, 4, "All tasks present and accounted for after sort.");
 
   // ascending
   for (i = 0; i < tasks.length; i += 1) {
@@ -128,6 +142,7 @@ test("Task manager - Sort tasks by duedate", function() {
   }
 
   tasks = manager.sort(-3);
+  equal(tasks.length, 4, "All tasks present and accounted for after sort.");
 
   // descending
   for (i = 0; i < tasks.length; i += 1) {
@@ -139,7 +154,7 @@ test("Task manager - Sort tasks by duedate", function() {
   }
 });
 
-test("Task manager - Filter out all completed tasks", function() {
+test("Filter out all completed tasks", function() {
   var manager = new TaskManager(),
     tasks = manager.loadAll(),
     numRecords = 4,
@@ -148,7 +163,7 @@ test("Task manager - Filter out all completed tasks", function() {
   equal(tasks.length, numRecords, "Loaded all 4 tasks to begin with.");
 
   tasks = manager.filter(2);
-  console.log(tasks);
+  // console.log(tasks);
   equal(tasks.length, numRecords - 1, "Filtered out 1 completed task.");
 
   for (i = 0; i < tasks.length; i += 1) {
@@ -156,7 +171,7 @@ test("Task manager - Filter out all completed tasks", function() {
   }
 });
 
-test("Task manager - Filter out all not started tasks", function() {
+test("Filter out all not started tasks", function() {
   var manager = new TaskManager(),
     tasks = manager.loadAll(),
     numRecords = 4,
@@ -165,7 +180,7 @@ test("Task manager - Filter out all not started tasks", function() {
   equal(tasks.length, numRecords, "Loaded all 4 tasks to begin with.");
 
   tasks = manager.filter(0);
-  console.log(tasks);
+  // console.log(tasks);
   equal(tasks.length, numRecords - 1, "Filtered out 1 not started task.");
 
   for (i = 0; i < tasks.length; i += 1) {
@@ -173,7 +188,7 @@ test("Task manager - Filter out all not started tasks", function() {
   }
 });
 
-test("Task manager - Filter out all not started and completed tasks", function() {
+test("Filter out all not started and completed tasks", function() {
   var manager = new TaskManager(),
     tasks = manager.loadAll(),
     numRecords = 4,
@@ -182,10 +197,10 @@ test("Task manager - Filter out all not started and completed tasks", function()
   equal(tasks.length, numRecords, "Loaded all 4 tasks to begin with.");
 
   tasks = manager.filter([0, 2]);
-  console.log(tasks);
+  // console.log(tasks);
   equal(tasks.length, numRecords - 2, "Filtered out 1 not started and 1 completed task.");
 
   for (i = 0; i < tasks.length; i += 1) {
-    ok(tasks[i].status !== 0 && tasks[i].status !== 2, "Task status is not completed");
+    ok(tasks[i].status !== 0 && tasks[i].status !== 2, "Task status is in progress.");
   }
 });

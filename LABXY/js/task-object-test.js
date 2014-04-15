@@ -40,7 +40,7 @@ function purgeStorage() {
   }
 }
 module("Task Object");
-test("Task object creation - Empty", function() {
+test("Creation - Empty", function() {
   var task = new Task(),
     empty = {
       id: 0,
@@ -52,7 +52,7 @@ test("Task object creation - Empty", function() {
   equal(JSON.stringify(task), JSON.stringify(empty), "Empty constructor should only have 'id' and 'status' properities.");
 });
 
-test("Task object creation - Partial", function() {
+test("Creation - Partial", function() {
   var part = {
     id: 0,
     name: "New Task",
@@ -65,7 +65,7 @@ test("Task object creation - Partial", function() {
   equal(JSON.stringify(task), JSON.stringify(part), "Empty constructor should only have 'id' and 'status' properities.");
 });
 
-test("Task object creation - Full", function() {
+test("Creation - Full", function() {
   var
   full = {
     id: 0,
@@ -81,7 +81,7 @@ test("Task object creation - Full", function() {
   equal(JSON.stringify(task), JSON.stringify(full), "Empty constructor should only have 'id' and 'status' properities.");
 });
 
-test("Task object storage - Save a task", function() {
+test("Storage - Save a task", function() {
   var tasks = [];
 
   for (var i = 0; i < samples.length; i += 1) {
@@ -98,7 +98,7 @@ test("Task object storage - Save a task", function() {
   }
 });
 
-test("Task object storage - Load a task", function() {
+test("Storage - Load a task", function() {
   var task;
 
   for (var i = 0; i < samples.length; i += 1) {

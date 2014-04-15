@@ -15,7 +15,11 @@ function TaskManager() {
   this.tasks = [];
   this.selected = new Task();
   this.sortIndex = SORT_BY_ID;
-  this.filters = [];
+  this.filters = {
+    0: false,
+    1: false,
+    2: false
+  };
 
   this.selectTask = function(task_id) {
     if (this.selected.id === task_id) {
@@ -128,7 +132,7 @@ function TaskManager() {
       i;
 
     if (param !== undefined) {
-      if (typeof param === typeof[]) {
+      if (typeof param === typeof new Array(1)) {
         this.setFilter(param);
       } else {
         this.toggleFilter(param);
@@ -138,7 +142,7 @@ function TaskManager() {
     this.tasks = this.loadAll();
 
     for (i = 0; i < this.tasks.length; i += 1) {
-      if (this.filters.indexOf(this.tasks[i].status) === -1) {
+      if (!this.filters[this.tasks[i].status]) {
         filtered.push(this.tasks[i]);
       }
     }
@@ -150,16 +154,16 @@ function TaskManager() {
 
   this.setFilter = function(options) {
     var i;
-    this.filters = [];
+
+    for (i in this.filters) {
+      this.filters[i] = false;
+    }
+
     for (i = 0; i < options.length; i += 1) {
-      this.filters.push(options[i]);
+      this.filters[options[i]] = true;
     }
   };
   this.toggleFilter = function(option) {
-    if (this.filters.indexOf(option) !== -1) {
-      this.filters.pop(this.filters.indexOf(option));
-    } else {
-      this.filters.push(option);
-    }
+    this.filters[option] = !this.filters[option];
   };
 }
