@@ -1,0 +1,16 @@
+<rss version="2.0">
+    <channel>
+        <title>TITLE GOES HERE</title>
+        <link>URL GOES HERE</link>
+        <pubDate>Mon, 29 Apr 2013 18:00:00 GMT</pubDate>
+
+        <managingEditor>editor@example.com</managingEditor>
+
+        <item>
+            <title>FIRST NEWS ITEM</title>
+            <link>NEWS ITEM URL</link>
+            <description>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, consequatur expedita quasi hic repudiandae voluptatem eveniet laboriosam vitae eligendi ipsam.
+            </description>
+        </item>
+    </channel>

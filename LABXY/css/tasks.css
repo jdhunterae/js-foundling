@@ -15,20 +15,32 @@
 /**
  * Container Specific Styling
  **/
- .active-task, #filters, .filter.active {
+
+/* ORIGINAL COLORS
+ .active-task, .filter.active {
   color: #333;
   border-color: #b9b9b9;
   background-color: #b9b9b9;
+} */
+
+/* DARKER SCHEME */
+ .active-task, .filter.active {
+    color: #ccc;
+    border-color: #464646;
+    background-color: #464646;
+}
+.active-task h5 {
+    color: #ccc;
 }
 .checked {
-  text-decoration: line-through;
+    text-decoration: line-through;
 }
 .icon-cal {
-  width: 14px;
-  height: 14px;
+    width: 14px;
+    height: 14px;
 }
 .wt-logo {
-  position: relative;
-  top: -5px;
-  height: 30px;
+    position: relative;
+    top: -5px;
+    height: 30px;
 }

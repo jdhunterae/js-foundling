@@ -8,156 +8,156 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebTasks | HTML5 App | Made with Foundation</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebTasks | HTML5 App | Made with Foundation</title>
 
-  <!-- STYLES LOADING BAY -->
-  <link type="text/css" rel="stylesheet" href="css/vendor/normalize.css" />
-  <link type="text/css" rel="stylesheet" href="css/vendor/foundation.css" />
-  <link type="text/css" rel="stylesheet" href="css/vendor/foundation-datepicker.css" />
-  <link type="text/css" rel="stylesheet" href="css/tasks.css" />
+    <!-- STYLES LOADING BAY -->
+    <link type="text/css" rel="stylesheet" href="css/vendor/normalize.css" />
+    <link type="text/css" rel="stylesheet" href="css/vendor/foundation.css" />
+    <link type="text/css" rel="stylesheet" href="css/vendor/foundation-datepicker.css" />
+    <link type="text/css" rel="stylesheet" href="css/tasks.css" />
 
-  <!-- PRE-DOM SCRIPTS LOADING BAY -->
-  <script type="text/javascript" src="js/vendor/modernizr.js"></script>
+    <!-- PRE-DOM SCRIPTS LOADING BAY -->
+    <script type="text/javascript" src="js/vendor/modernizr.js"></script>
 </head>
 
 <body>
-  <!-- HEADLINER -->
-  <div class="row">
-    <div class="large-12 columns">
-      <!-- <h1>Welcome to WebTasks</h1> -->
-      <div id="wt-header">
-        <img id="wt-logo" src="img/wt-logo.png" alt="WebTasks logo" />
-      </div>
+    <!-- HEADLINER -->
+    <div class="row">
+        <div class="large-12 columns">
+            <!-- <h1>Welcome to WebTasks</h1> -->
+            <div id="wt-header">
+                <img id="wt-logo" src="img/wt-logo.png" alt="WebTasks logo" />
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- WELCOME CALLOUT BOX -->
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="panel callout">
-        <h3>We're stoked that you want to try
+    <!-- WELCOME CALLOUT BOX -->
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="panel callout">
+                <h3>We're stoked that you want to try
           <img class="wt-logo" src="img/wt-logo.png" alt="WebTaks Logo" />!</h3>
-        <p>To get going, we've loaded a few sample tasks into your task list. This app uses jQuery, JSON, and HTML5 localStorage to store and manage your tasks.</p>
-        <p>Once you've had a look around, feel free to delete our sample tasks and create a few of your own using the form on the right-hand side of the page.</p>
-      </div>
+                <p>To get going, we've loaded a few sample tasks into your task list. This app uses jQuery, JSON, and HTML5 localStorage to store and manage your tasks.</p>
+                <p>Once you've had a look around, feel free to delete our sample tasks and create a few of your own using the form on the right-hand side of the page.</p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- MAIN BODY CONTENT -->
-  <div class="row">
-    <div class="large-4 columns right">
-      <!-- TASK-FORM (ADD/EDIT) -->
-      <div id="form-panel" class="panel">
-        <h5 id="form-header">Add a New Task:</h5>
+    <!-- MAIN BODY CONTENT -->
+    <div class="row">
+        <div class="large-4 columns right">
+            <!-- TASK-FORM (ADD/EDIT) -->
+            <div id="form-panel" class="panel">
+                <h5 id="form-header">Add a New Task:</h5>
 
-        <form action="" id="entry-form" data-abide>
-          <input type="hidden" name="entry-id" id="entry-id" value="-1" />
+                <form action="" id="entry-form" data-abide>
+                    <input type="hidden" name="entry-id" id="entry-id" value="-1" />
 
-          <div class="row">
-            <div class="large-12 columns">
-              <label for="entry-name">Task Name
-                <small>required</small>
-              </label>
-              <input type="text" name="entry-name" id="entry-name" placeholder="Task name..." required />
-            </div>
-          </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label for="entry-name">Task Name
+                                <small>required</small>
+                            </label>
+                            <input type="text" name="entry-name" id="entry-name" placeholder="Task name..." required />
+                        </div>
+                    </div>
 
-          <div class="row">
-            <div class="large-12 columns">
-              <label for="entry-description">Task Description
-                <small>required</small>
-              </label>
-              <textarea name="entry-description" id="entry-description" placeholder="Task description..." required></textarea>
-            </div>
-          </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label for="entry-description">Task Description
+                                <small>required</small>
+                            </label>
+                            <textarea name="entry-description" id="entry-description" placeholder="Task description..." required></textarea>
+                        </div>
+                    </div>
 
-          <div class="row">
-            <div class="large-12 columns">
-              <div class="row collapse" id="duedate-wrapper">
-                <label for="entry-duedate">Task Due Date
-                  <small>required</small>
-                </label>
-                <div class="large-9 columns">
-                  <input type="text" name="entry-duedate" id="entry-duedate" required readonly />
-                </div>
-                <div class="large-3 columns">
-                  <span class="postfix">
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <div class="row collapse" id="duedate-wrapper">
+                                <label for="entry-duedate">Task Due Date
+                                    <small>required</small>
+                                </label>
+                                <div class="large-9 columns">
+                                    <input type="text" name="entry-duedate" id="entry-duedate" placeholder="04-15-2014" required readonly />
+                                </div>
+                                <div class="large-3 columns">
+                                    <span class="postfix">
                     <img class="icon-cal" src="img/cal-icon.png" alt="calendar icon">
                   </span>
-                </div>
-              </div>
-            </div>
-          </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="row">
-            <div class="large-12 columns">
-              <label for="entry-status">Task Status
-                <small>required</small>
-              </label>
-              <select name="entry-status" id="entry-status" required>
-                <!-- STATUS OPTIONS GO HERE -->
-              </select>
-            </div>
-          </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label for="entry-status">Task Status
+                                <small>required</small>
+                            </label>
+                            <select name="entry-status" id="entry-status" required>
+                                <!-- STATUS OPTIONS GO HERE -->
+                            </select>
+                        </div>
+                    </div>
 
-          <div class="row">
-            <div class="large-12 columns text-right">
-              <input type="button" value="delete" id="op-entry-delete" class="button tiny radius alert disabled" name="op-entry-delete" />
-              <input type="reset" value="clear" id="op-entry-discard" class="button tiny radius secondary" name="op-entry-discard" />
-              <input type="submit" value="save" id="op-entry-save" class="button tiny radius" name="op-entry-save" />
+                    <div class="row">
+                        <div class="large-12 columns text-right">
+                            <input type="button" value="delete" id="op-entry-delete" class="button tiny radius alert disabled" name="op-entry-delete" />
+                            <input type="reset" value="clear" id="op-entry-discard" class="button tiny radius secondary" name="op-entry-discard" />
+                            <input type="submit" value="save" id="op-entry-save" class="button tiny radius" name="op-entry-save" />
+                        </div>
+                    </div>
+                </form>
             </div>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="large-8 columns">
-      <!-- TASK-LIST SORT SELECTOR -->
-      <div class="row">
-        <div class="large-4 columns">
-          <div id="sort-wrapper">
-            <div class="large-4 columns">
-              <label for="task-order" class="right inline">Order:</label>
-            </div>
-            <div class="large-8 columns">
-              <select id="task-order" name="task-order">
-                <!-- SORTING OPTIONS GO HERE -->
-              </select>
-            </div>
-          </div>
         </div>
 
-        <!-- TASK-LIST FILTERS -->
         <div class="large-8 columns">
-          <div id="filters">
-            <div class="large-12 columns button-bar">
-              <ul class="button-group radius">
-                <!-- FILTER BUTTONS GO HERE -->
-              </ul>
+            <!-- TASK-LIST SORT SELECTOR -->
+            <div class="row">
+                <div class="large-4 columns">
+                    <div id="sort-wrapper">
+                        <div class="large-4 columns">
+                            <label for="task-order" class="right inline">Order:</label>
+                        </div>
+                        <div class="large-8 columns">
+                            <select id="task-order" name="task-order">
+                                <!-- SORTING OPTIONS GO HERE -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TASK-LIST FILTERS -->
+                <div class="large-8 columns">
+                    <div id="filters">
+                        <div class="large-12 columns button-bar">
+                            <ul class="button-group radius">
+                                <!-- FILTER BUTTONS GO HERE -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <!-- TASK-LIST -->
+            <div class="row">
+                <ul id="task-list" class="no-bullet large-12 columns">
+                    <!-- LIST OF TASKS GOES HERE -->
+                </ul>
+            </div>
         </div>
-      </div>
-
-      <!-- TASK-LIST -->
-      <div class="row">
-        <ul id="task-list" class="no-bullet large-12 columns">
-          <!-- LIST OF TASKS GOES HERE -->
-        </ul>
-      </div>
     </div>
-  </div>
 
-  <!-- POST-DOM SCRIPTS LOADING BAY -->
-  <script type="text/javascript" src="js/vendor/jquery.js"></script>
-  <script type="text/javascript" src="js/foundation/foundation.js"></script>
-  <script type="text/javascript" src="js/foundation/foundation.abide.js"></script>
-  <script type="text/javascript" src="js/vendor/foundation-datepicker.js"></script>
-  <script type="text/javascript" src="js/task-object.js"></script>
-  <script type="text/javascript" src="js/task-manager.js"></script>
-  <script type="text/javascript" src="js/scripts.js"></script>
+    <!-- POST-DOM SCRIPTS LOADING BAY -->
+    <script type="text/javascript" src="js/vendor/jquery.js"></script>
+    <script type="text/javascript" src="js/foundation/foundation.js"></script>
+    <script type="text/javascript" src="js/foundation/foundation.abide.js"></script>
+    <script type="text/javascript" src="js/vendor/foundation-datepicker.js"></script>
+    <script type="text/javascript" src="js/task-object.js"></script>
+    <script type="text/javascript" src="js/task-manager.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 
 </html>
