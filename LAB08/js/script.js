@@ -13,6 +13,6 @@ function showResult(selection) {
         }
     };
 
-    request.open("GET", "livesearch.php?q=" + selection, true);
+    request.open("GET", "php/livesearch.php?q=" + selection, true);
     request.send();
 }
