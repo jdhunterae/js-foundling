@@ -1,22 +1,21 @@
 /**********************************************************************
  ***   Task Object file for HTML/JavaScript Application             ***
  ***   @author: Andrew Pomerleau                                    ***
- ***   @date:   03/24/2014                                          ***
+ ***   @date:   04/28/2014                                          ***
  **********************************************************************/
 
 function Task(obj) {
     "use strict";
     var STORAGE = window.localStorage,
-        NEW_ID = -1,
         PREFIX = "TASKS:",
         STORED_INDEX = PREFIX + "index",
         ENTRY = PREFIX + "task-",
+        NEW_ID = -1,
         STATUSES = ["Not Started", "In Progress", "Completed"];
 
-    if ((typeof obj) === (typeof "a string")) {
+    if ((typeof obj) === "string") {
         obj = JSON.parse(obj);
-    }
-    if (!obj) {
+    } else if (!obj) {
         obj = {};
     }
 
@@ -26,53 +25,44 @@ function Task(obj) {
     this.duedate = obj.duedate || "";
     this.status = parseInt(obj.status, 10) || 0;
 
-    this.store = function() {
-        var json;
-
-        if (this.id === -1) {
-            this.id = parseInt(STORAGE.getItem(STORED_INDEX), 10);
-        }
-
-        json = JSON.stringify(this);
-
-        STORAGE.setItem(ENTRY + this.id, json);
-
-        if (STORAGE.getItem(STORED_INDEX) <= this.id) {
-            STORAGE.setItem(STORED_INDEX, this.id + 1);
-        }
+    this.getDuedate = function() {
+        return this.duedate.replace(/\//g, "-");
     };
-    this.load = function() {
-        var data, prop;
-
-        if (isNaN(this.id)) {
-            return;
+    this.getStatus = function() {
+        if (this.status < 0 || this.status >= STATUSES.length) {
+            this.status = 0;
         }
-
-        data = STORAGE.getItem(ENTRY + this.id);
-
-        this.parse(data);
+        return STATUSES[this.status];
     };
 
     this.parse = function(data) {
         var prop;
-
         data = JSON.parse(data);
-
         for (prop in data) {
             if (data.hasOwnProperty(prop)) {
                 this[prop] = data[prop];
             }
         }
     };
-    this.getStatus = function() {
-        if (this.status < 0 || this.status >= STATUSES.length) {
-            this.status = 0;
-        }
 
-        return STATUSES[this.status];
+    this.store = function() {
+        var json;
+        if (this.id === NEW_ID) {
+            this.id = parseInt(STORAGE.getItem(STORED_INDEX), 10);
+        }
+        json = JSON.stringify(this);
+        STORAGE.setItem(ENTRY + this.id, json);
+        if (STORAGE.getItem(STORED_INDEX) <= this.id) {
+            STORAGE.setItem(STORED_INDEX, this.id + 1);
+        }
     };
-    this.getDuedate = function() {
-        return this.duedate.replace(/\//g, "-");
+    this.load = function() {
+        var data;
+        if (isNaN(this.id)) {
+            return;
+        }
+        data = STORAGE.getItem(ENTRY + this.id);
+        this.parse(data);
     };
 
     this.delete = function() {
@@ -81,5 +71,12 @@ function Task(obj) {
 
     this.hasId = function(task_id) {
         return (parseInt(this.id, 10) === parseInt(task_id, 10));
+    };
+    this.equals = function(task) {
+        var us, them;
+        us = JSON.stringify(this);
+        them = JSON.stringify(task);
+
+        return (us === them);
     };
 }
