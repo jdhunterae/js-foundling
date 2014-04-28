@@ -5,12 +5,14 @@
  **********************************************************************/
 
 function TaskManager() {
-    STORAGE = window.localStorage;
-    SORT_KEYS = ["", "id", "name", "duedate", "status"];
-    SORT_BY_ID = 1;
-    SORT_BY_NAME = 2;
-    SORT_BY_DUEDATE = 3;
-    SORT_BY_STATUS = 4;
+    "use strict";
+    var STORAGE = window.localStorage,
+        NEW_ID = -1,
+        SORT_KEYS = ["", "id", "name", "duedate", "status"],
+        SORT_BY_ID = 1,
+        SORT_BY_NAME = 2,
+        SORT_BY_DUEDATE = 3,
+        SORT_BY_STATUS = 4;
 
     this.tasks = [];
     this.selected = null;
@@ -35,7 +37,7 @@ function TaskManager() {
 
             $(".task-panel").each(function() {
                 $(this).removeClass("active-task");
-                if (parseInt($(this).data("task-id")) === task_id) {
+                if (parseInt($(this).data("task-id"), 10) === task_id) {
                     $(this).addClass("active-task");
                 }
             });
@@ -64,9 +66,6 @@ function TaskManager() {
         }
     };
 
-    this.loadSelected = function() {};
-    this.storeSelected = function() {};
-
     this.loadAll = function() {
         var pattern = /TASKS:task-/,
             i;
@@ -83,7 +82,9 @@ function TaskManager() {
     this.storeAll = function() {
         var i;
         for (i in this.tasks) {
-            this.tasks[i].store();
+            if (this.tasks[i].id !== NEW_ID) {
+                this.tasks[i].store();
+            }
         }
     };
 
@@ -102,7 +103,6 @@ function TaskManager() {
             case SORT_BY_NAME:
                 this.sortIndex = SORT_BY_NAME;
                 break;
-            case SORT_BY_ID:
             default:
                 this.sortIndex = SORT_BY_ID;
                 break;
@@ -116,7 +116,7 @@ function TaskManager() {
     };
     this.sort = function(param) {
         var sorted = this.filter(),
-            msg, key;
+            key;
 
         if (param !== undefined) {
             this.changeSort(param);
@@ -140,7 +140,7 @@ function TaskManager() {
             i;
 
         if (param !== undefined) {
-            if (typeof param === typeof new Array(1)) {
+            if ((typeof param) === (typeof new Array(1))) {
                 this.setFilter(param);
             } else {
                 this.toggleFilter(param);

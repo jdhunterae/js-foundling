@@ -5,14 +5,18 @@
  **********************************************************************/
 
 function Task(obj) {
+    "use strict";
     var STORAGE = window.localStorage,
+        NEW_ID = -1,
         PREFIX = "TASKS:",
         STATUSES = ["Not Started", "In Progress", "Completed"];
 
-    if (typeof obj === typeof "a string") {
+    if ((typeof obj) === (typeof "a string")) {
         obj = JSON.parse(obj);
     }
-    if (!obj) obj = {};
+    if (!obj) {
+        obj = {};
+    }
 
     this.id = parseInt(obj.id, 10) || 0;
     this.name = obj.name || "";
@@ -28,7 +32,7 @@ function Task(obj) {
         }
 
         json = JSON.stringify(this);
-        // console.log(json);
+
         STORAGE.setItem(PREFIX + "task-" + this.id, json);
 
         if (STORAGE.getItem(PREFIX + "index") <= this.id) {
@@ -36,11 +40,9 @@ function Task(obj) {
         }
     };
     this.load = function() {
-        var json = JSON.stringify(this),
-            data, prop;
-        // console.log("Before load: " + json);
+        var data, prop;
+
         if (isNaN(this.id)) {
-            // console.log("no id to load task by.");
             return;
         }
 
@@ -52,16 +54,10 @@ function Task(obj) {
                 this[prop] = data[prop];
             }
         }
-
-        // json = JSON.stringify(this);
-        // console.log("After load: " + json);
     };
 
     this.parse = function(data) {
-        var json = JSON.stringify(this),
-            prop;
-
-        // console.log("Before load: " + json);
+        var prop;
 
         data = JSON.parse(data);
 
@@ -70,9 +66,6 @@ function Task(obj) {
                 this[prop] = data[prop];
             }
         }
-
-        json = JSON.stringify(this);
-        //  console.log("After load: " + json);
     };
     this.getStatus = function() {
         if (this.status < 0 || this.status >= STATUSES.length) {
@@ -132,7 +125,9 @@ function Task(obj) {
 
     this.fillForm = function() {
         var index;
+
         $("#entry-status").html("");
+
         for (index in STATUSES) {
             if (!isNaN(index)) {
                 $("#entry-status").append(new Option(STATUSES[index], index));

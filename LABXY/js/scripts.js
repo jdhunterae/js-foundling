@@ -178,6 +178,7 @@ function saveForm() {
     var task = new Task();
     task.storeForm();
     refreshDisplay();
+    manager.clearForm();
 }
 
 function resetForm() {
