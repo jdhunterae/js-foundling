@@ -9,6 +9,8 @@ function Task(obj) {
     var STORAGE = window.localStorage,
         NEW_ID = -1,
         PREFIX = "TASKS:",
+        STORED_INDEX = PREFIX + "index",
+        ENTRY = PREFIX + "task-",
         STATUSES = ["Not Started", "In Progress", "Completed"];
 
     if ((typeof obj) === (typeof "a string")) {
@@ -28,15 +30,15 @@ function Task(obj) {
         var json;
 
         if (this.id === -1) {
-            this.id = parseInt(STORAGE.getItem(PREFIX + "index"), 10);
+            this.id = parseInt(STORAGE.getItem(STORED_INDEX), 10);
         }
 
         json = JSON.stringify(this);
 
-        STORAGE.setItem(PREFIX + "task-" + this.id, json);
+        STORAGE.setItem(ENTRY + this.id, json);
 
-        if (STORAGE.getItem(PREFIX + "index") <= this.id) {
-            STORAGE.setItem(PREFIX + "index", this.id + 1);
+        if (STORAGE.getItem(STORED_INDEX) <= this.id) {
+            STORAGE.setItem(STORED_INDEX, this.id + 1);
         }
     };
     this.load = function() {
@@ -46,14 +48,9 @@ function Task(obj) {
             return;
         }
 
-        data = STORAGE.getItem(PREFIX + "task-" + this.id);
-        data = JSON.parse(data);
+        data = STORAGE.getItem(ENTRY + this.id);
 
-        for (prop in data) {
-            if (data.hasOwnProperty(prop)) {
-                this[prop] = data[prop];
-            }
-        }
+        this.parse(data);
     };
 
     this.parse = function(data) {
@@ -78,83 +75,8 @@ function Task(obj) {
         return this.duedate.replace(/\//g, "-");
     };
 
-    this.display = function(isSelected) {
-        var name_div, desc_div, stat_div, name_wrap, name_col, date_col, task_panel, top_row, bottom_row, list_item;
-
-        isSelected = (isSelected !== undefined) ? isSelected : false;
-
-        name_div = $("<span></span>").addClass("task-name");
-        name_div.text(this.name);
-
-        stat_div = $("<small data-status-id=\"" + this.status + "\"></small>");
-        stat_div.addClass("task-status");
-        stat_div.text(" (" + this.getStatus() + ")");
-
-        name_wrap = $("<h5></h5>");
-        name_wrap.append(name_div);
-        name_wrap.append(stat_div);
-
-        name_col = $("<div></div>").addClass("large-8 columns");
-        name_col.append(name_wrap);
-
-        date_col = $("<div></div>").addClass("large-4 columns text-right task-duedate");
-        date_col.text(this.getDuedate());
-
-        top_row = $("<div></div>").addClass("row");
-        top_row.append(name_col);
-        top_row.append(date_col);
-
-        desc_div = $("<div></div>").addClass("large-12 columns task-description");
-        desc_div.text(this.description);
-
-        bottom_row = $("<div></div>").addClass("row");
-        bottom_row.append(desc_div);
-        if (isSelected) {
-            task_panel = $("<div data-task-id=\"" + this.id + "\"></div>").addClass("panel task-panel radius clearfix active-task");
-        } else {
-            task_panel = $("<div data-task-id=\"" + this.id + "\"></div>").addClass("panel task-panel radius clearfix");
-        }
-        task_panel.append(top_row);
-        task_panel.append(bottom_row);
-
-        list_item = $("<li></li>").addClass("row");
-        list_item.append(task_panel);
-
-        $("#task-list").append($(list_item));
-    };
-
-    this.fillForm = function() {
-        var index;
-
-        $("#entry-status").html("");
-
-        for (index in STATUSES) {
-            if (!isNaN(index)) {
-                $("#entry-status").append(new Option(STATUSES[index], index));
-            }
-        }
-
-        $("#entry-id").val(this.id);
-        $("#entry-name").val(this.name);
-        $("#entry-description").val(this.description);
-        $("#entry-duedate").val(this.getDuedate());
-        $("#entry-status").val(this.status);
-
-        $("#op-entry-delete").removeClass("disabled");
-    };
-
-    this.storeForm = function() {
-        this.id = parseInt($("#entry-id").val(), 10);
-        this.name = $("#entry-name").val();
-        this.description = $("#entry-description").val();
-        this.duedate = $("#entry-duedate").val();
-        this.status = parseInt($("#entry-status").val(), 10);
-
-        this.store();
-    };
-
     this.delete = function() {
-        STORAGE.removeItem(PREFIX + "task-" + this.id);
+        STORAGE.removeItem(ENTRY + this.id);
     };
 
     this.hasId = function(task_id) {

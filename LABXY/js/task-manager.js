@@ -9,6 +9,7 @@ function TaskManager() {
     var STORAGE = window.localStorage,
         NEW_ID = -1,
         SORT_KEYS = ["", "id", "name", "duedate", "status"],
+        STATUSES = ["Not Started", "In Progress", "Completed"],
         SORT_BY_ID = 1,
         SORT_BY_NAME = 2,
         SORT_BY_DUEDATE = 3,
@@ -32,8 +33,7 @@ function TaskManager() {
             this.selected.id = task_id;
             this.selected.load();
 
-            $("#form-header").text("Edit Task");
-            this.selected.fillForm();
+            this.fillForm();
 
             $(".task-panel").each(function() {
                 $(this).removeClass("active-task");
@@ -55,15 +55,58 @@ function TaskManager() {
         $("#task-list").html("");
     };
 
-    this.display = function() {
+    this.displayTasks = function() {
         var i;
         this.sort();
 
         this.clearDisplay();
 
         for (i = 0; i < this.tasks.length; i += 1) {
-            this.tasks[i].display(this.selected !== null && this.selected.id === this.tasks[i].id);
+            this.display(this.tasks[i]);
         }
+    };
+    this.display = function(task) {
+        var name_div, desc_div, stat_div, name_wrap, name_col, date_col, task_panel, top_row, bottom_row, list_item,
+            isSelected = (this.selected !== null && task.hasId(this.selected.id));
+
+        name_div = $("<span></span>").addClass("task-name");
+        name_div.text(task.name);
+
+        stat_div = $("<small data-status-id=\"" + task.status + "\"></small>");
+        stat_div.addClass("task-status");
+        stat_div.text(" (" + task.getStatus() + ")");
+
+        name_wrap = $("<h5></h5>");
+        name_wrap.append(name_div);
+        name_wrap.append(stat_div);
+
+        name_col = $("<div></div>").addClass("large-8 columns");
+        name_col.append(name_wrap);
+
+        date_col = $("<div></div>").addClass("large-4 columns text-right task-duedate");
+        date_col.text(task.getDuedate());
+
+        top_row = $("<div></div>").addClass("row");
+        top_row.append(name_col);
+        top_row.append(date_col);
+
+        desc_div = $("<div></div>").addClass("large-12 columns task-description");
+        desc_div.text(task.description);
+
+        bottom_row = $("<div></div>").addClass("row");
+        bottom_row.append(desc_div);
+        if (isSelected) {
+            task_panel = $("<div data-task-id=\"" + task.id + "\"></div>").addClass("panel task-panel radius clearfix active-task");
+        } else {
+            task_panel = $("<div data-task-id=\"" + task.id + "\"></div>").addClass("panel task-panel radius clearfix");
+        }
+        task_panel.append(top_row);
+        task_panel.append(bottom_row);
+
+        list_item = $("<li></li>").addClass("row");
+        list_item.append(task_panel);
+
+        $("#task-list").append($(list_item));
     };
 
     this.loadAll = function() {
@@ -181,7 +224,7 @@ function TaskManager() {
             this.clearForm();
         } else {
             this.selected = task;
-            task.fillForm();
+            this.fillForm();
         }
     };
 
@@ -189,9 +232,50 @@ function TaskManager() {
         var empty = new Task({
             id: -1
         });
-        empty.fillForm();
+
+        this.selected = (new Task(empty));
+        this.fillForm();
 
         $("#form-header").text("Add a New Task");
         $("#op-entry-delete").addClass("disabled");
+
+        this.selected = null;
+    };
+    this.storeForm = function() {
+        var data = {
+            id: $("#entry-id").val(),
+            name: $("#entry-name").val(),
+            description: $("#entry-description").val(),
+            duedate: $("#entry-duedate").val(),
+            status: $("#entry-status").val()
+        }, task;
+
+        task = new Task(data);
+        task.store();
+    };
+    this.fillForm = function() {
+        var index;
+
+        if (this.selected === null) {
+            this.clearForm();
+            return;
+        }
+
+        $("#form-header").text("Edit Task");
+
+        $("#entry-status").html("");
+        for (index in STATUSES) {
+            if (!isNaN(index)) {
+                $("#entry-status").append(new Option(STATUSES[index], index));
+            }
+        }
+
+        $("#entry-id").val(this.selected.id);
+        $("#entry-name").val(this.selected.name);
+        $("#entry-description").val(this.selected.description);
+        $("#entry-duedate").val(this.selected.getDuedate());
+        $("#entry-status").val(this.selected.status);
+
+        $("#op-entry-delete").removeClass('disabled');
     };
 }

@@ -33,7 +33,7 @@ var manager = new TaskManager(),
 initPage();
 
 function refreshDisplay() {
-    manager.display();
+    manager.displayTasks();
 
     $("#task-list").find(".task-panel").each(function() {
         $(this).click(function() {
@@ -176,7 +176,7 @@ function initForm() {
 
 function saveForm() {
     var task = new Task();
-    task.storeForm();
+    manager.storeForm();
     refreshDisplay();
     manager.clearForm();
 }
