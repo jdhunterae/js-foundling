@@ -7,28 +7,40 @@
 var manager = new TaskManager(),
     samples = [{
         id: 0,
-        name: "Zeroth Task",
-        description: "A task's description of the things to do to complete that task.",
-        duedate: "02/02/2014",
-        status: 0
+        name: "Create Task Object",
+        description: "Create a basic object structure with id, name, description, duedate, and status.",
+        duedate: "02/20/2014",
+        status: 2
     }, {
         id: 1,
-        name: "First Task",
-        description: "Get a new job.",
-        duedate: "05/15/2014",
-        status: 1
+        name: "Link Tasks to Web Form",
+        description: "Enable save, load, and delete functions connected with web-form button events.",
+        duedate: "03/14/2014",
+        status: 2
     }, {
         id: 2,
-        name: "Second Task",
-        description: "Finish task object coding.",
-        duedate: "03/22/2014",
-        status: 1
+        name: "Sort and Filter Options",
+        description: "Create TaskManager object to help, sort, filter and manage an array of tasks.",
+        duedate: "04/04/2014",
+        status: 2
     }, {
         id: 3,
-        name: "Third Task",
-        description: "Finish submitting tax documents.",
-        duedate: "04/15/2014",
-        status: 2
+        name: "Future Features: Ranking",
+        description: "Give tasks an importance ranking of low, medium, or high. And allow sorting/filtering by importance.",
+        duedate: "05/16/2014",
+        status: 1
+    }, {
+        id: 4,
+        name: "Future Features: Progress Bar",
+        description: "Add progress bar/percentage to 'In Progress' tasks. 'Not Started' tasks are defaulted to 0 and 'Completed' tasks are set to 100.",
+        duedate: "05/30/2014",
+        status: 0
+    }, {
+        id: 5,
+        name: "Future Features: Tagging",
+        description: "Add a tagging freature to allow tasks to be organized into categories; such as, 'home,' 'work,' 'bills,' etc.",
+        duedate: "06/13/2014",
+        status: 0
     }];
 initPage();
 
@@ -90,7 +102,6 @@ function setSortOptions() {
 
 function sortListener(selector, event) {
     if ($(selector).val() !== 0) {
-        console.log("sorting by: " + $(selector).val());
         manager.changeSort($(selector).val());
 
         refreshDisplay();
@@ -175,10 +186,8 @@ function initForm() {
 }
 
 function saveForm() {
-    var task = new Task();
     manager.storeForm();
-    refreshDisplay();
-    manager.clearForm();
+    resetForm();
 }
 
 function resetForm() {

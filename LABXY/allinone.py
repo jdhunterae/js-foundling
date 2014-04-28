@@ -15,7 +15,7 @@ def read_js_file(js_file_name):
     """
     This is the read_file function for javascript files
     """
-    OUT_FILE.write("<script>\n")
+    OUT_FILE.write("<script type=\"text/javascript\">\n")
 
     js_to_read = open(js_file_name)
 
@@ -43,7 +43,7 @@ def read_css_file(css_file_name):
     """
     This is the read_file function for javascript files
     """
-    OUT_FILE.write("<style>\n")
+    OUT_FILE.write("<style type=\"text/css\">\n")
 
     css_to_read = open(css_file_name)
 

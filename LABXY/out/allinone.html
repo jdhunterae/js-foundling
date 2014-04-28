@@ -14,7 +14,7 @@
 
     <!-- STYLES LOADING BAY -->
 <!--     <link type="text/css" rel="stylesheet" href="css/vendor/normalize.css" /> -->
-<style>
+<style type="text/css">
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 
 /* ==========================================================================
@@ -427,7 +427,7 @@ table {
 }
 </style>
 <!--     <link type="text/css" rel="stylesheet" href="css/vendor/foundation.css" /> -->
-<style>
+<style type="text/css">
 meta.foundation-version {
   font-family: "/5.1.0/"; }
 
@@ -5654,7 +5654,7 @@ th.hide-for-touch {
   display: table-cell !important; }
 </style>
 <!--     <link type="text/css" rel="stylesheet" href="css/vendor/foundation-datepicker.css" /> -->
-<style>
+<style type="text/css">
 /*
 .datepicker {
   .prev, .next {font-style:normal;}
@@ -5677,7 +5677,7 @@ th.hide-for-touch {
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
 </style>
 <!--     <link type="text/css" rel="stylesheet" href="css/tasks.css" /> -->
-<style>
+<style type="text/css">
 /**********************************************************************
  ***   Main Stylesheet for HTML/JavaScript Application              ***
  ***   @author: Andrew Pomerleau                                    ***
@@ -5695,25 +5695,17 @@ th.hide-for-touch {
 /**
  * Container Specific Styling
  **/
-
-/* ORIGINAL COLORS
- .active-task, .filter.active {
-  color: #333;
-  border-color: #b9b9b9;
-  background-color: #b9b9b9;
-} */
-
-/* DARKER SCHEME */
- .active-task, .filter.active {
+ .completed h5, .completed {
+    color: #999;
+    text-decoration: line-through;
+}
+.active-task, .filter.active {
     color: #ccc;
     border-color: #464646;
     background-color: #464646;
 }
 .active-task h5 {
     color: #ccc;
-}
-.checked {
-    text-decoration: line-through;
 }
 .icon-cal {
     width: 14px;
@@ -5728,7 +5720,7 @@ th.hide-for-touch {
 
     <!-- PRE-DOM SCRIPTS LOADING BAY -->
 <!--     <script type="text/javascript" src="js/vendor/modernizr.js"></script> -->
-<script>
+<script type="text/javascript">
 /*!
  * Modernizr v2.7.1
  * www.modernizr.com
@@ -5870,7 +5862,7 @@ window.Modernizr=function(a,b,c){function d(a){t.cssText=a}function e(a,b){retur
 
     <!-- POST-DOM SCRIPTS LOADING BAY -->
 <!--     <script type="text/javascript" src="js/vendor/jquery.js"></script> -->
-<script>
+<script type="text/javascript">
 /*!
  * jQuery JavaScript Library v2.1.0
  * http://jquery.com/
@@ -5899,7 +5891,7 @@ h===(d.ownerDocument||$)&&m.push(h.defaultView||h.parentWindow||a)}for(f=0;(g=m[
 };if(void 0===b&&(b=ab.ajaxSettings&&ab.ajaxSettings.traditional),ab.isArray(a)||a.jquery&&!ab.isPlainObject(a))ab.each(a,function(){e(this.name,this.value)});else for(c in a)O(c,a[c],b,e);return d.join("&").replace(yc,"+")},ab.fn.extend({serialize:function(){return ab.param(this.serializeArray())},serializeArray:function(){return this.map(function(){var a=ab.prop(this,"elements");return a?ab.makeArray(a):this}).filter(function(){var a=this.type;return this.name&&!ab(this).is(":disabled")&&Cc.test(this.nodeName)&&!Bc.test(a)&&(this.checked||!yb.test(a))}).map(function(a,b){var c=ab(this).val();return null==c?null:ab.isArray(c)?ab.map(c,function(a){return{name:b.name,value:a.replace(Ac,"\r\n")}}):{name:b.name,value:c.replace(Ac,"\r\n")}}).get()}}),ab.ajaxSettings.xhr=function(){try{return new XMLHttpRequest}catch(a){}};var Dc=0,Ec={},Fc={0:200,1223:204},Gc=ab.ajaxSettings.xhr();a.ActiveXObject&&ab(a).on("unload",function(){for(var a in Ec)Ec[a]()}),Z.cors=!!Gc&&"withCredentials"in Gc,Z.ajax=Gc=!!Gc,ab.ajaxTransport(function(a){var b;return Z.cors||Gc&&!a.crossDomain?{send:function(c,d){var e,f=a.xhr(),g=++Dc;if(f.open(a.type,a.url,a.async,a.username,a.password),a.xhrFields)for(e in a.xhrFields)f[e]=a.xhrFields[e];a.mimeType&&f.overrideMimeType&&f.overrideMimeType(a.mimeType),a.crossDomain||c["X-Requested-With"]||(c["X-Requested-With"]="XMLHttpRequest");for(e in c)f.setRequestHeader(e,c[e]);b=function(a){return function(){b&&(delete Ec[g],b=f.onload=f.onerror=null,"abort"===a?f.abort():"error"===a?d(f.status,f.statusText):d(Fc[f.status]||f.status,f.statusText,"string"==typeof f.responseText?{text:f.responseText}:void 0,f.getAllResponseHeaders()))}},f.onload=b(),f.onerror=b("error"),b=Ec[g]=b("abort"),f.send(a.hasContent&&a.data||null)},abort:function(){b&&b()}}:void 0}),ab.ajaxSetup({accepts:{script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"},contents:{script:/(?:java|ecma)script/},converters:{"text script":function(a){return ab.globalEval(a),a}}}),ab.ajaxPrefilter("script",function(a){void 0===a.cache&&(a.cache=!1),a.crossDomain&&(a.type="GET")}),ab.ajaxTransport("script",function(a){if(a.crossDomain){var b,c;return{send:function(d,e){b=ab("<script>").prop({async:!0,charset:a.scriptCharset,src:a.url}).on("load error",c=function(a){b.remove(),c=null,a&&e("error"===a.type?404:200,a.type)}),$.head.appendChild(b[0])},abort:function(){c&&c()}}}});var Hc=[],Ic=/(=)\?(?=&|$)|\?\?/;ab.ajaxSetup({jsonp:"callback",jsonpCallback:function(){var a=Hc.pop()||ab.expando+"_"+jc++;return this[a]=!0,a}}),ab.ajaxPrefilter("json jsonp",function(b,c,d){var e,f,g,h=b.jsonp!==!1&&(Ic.test(b.url)?"url":"string"==typeof b.data&&!(b.contentType||"").indexOf("application/x-www-form-urlencoded")&&Ic.test(b.data)&&"data");return h||"jsonp"===b.dataTypes[0]?(e=b.jsonpCallback=ab.isFunction(b.jsonpCallback)?b.jsonpCallback():b.jsonpCallback,h?b[h]=b[h].replace(Ic,"$1"+e):b.jsonp!==!1&&(b.url+=(kc.test(b.url)?"&":"?")+b.jsonp+"="+e),b.converters["script json"]=function(){return g||ab.error(e+" was not called"),g[0]},b.dataTypes[0]="json",f=a[e],a[e]=function(){g=arguments},d.always(function(){a[e]=f,b[e]&&(b.jsonpCallback=c.jsonpCallback,Hc.push(e)),g&&ab.isFunction(f)&&f(g[0]),g=f=void 0}),"script"):void 0}),ab.parseHTML=function(a,b,c){if(!a||"string"!=typeof a)return null;"boolean"==typeof b&&(c=b,b=!1),b=b||$;var d=gb.exec(a),e=!c&&[];return d?[b.createElement(d[1])]:(d=ab.buildFragment([a],b,e),e&&e.length&&ab(e).remove(),ab.merge([],d.childNodes))};var Jc=ab.fn.load;ab.fn.load=function(a,b,c){if("string"!=typeof a&&Jc)return Jc.apply(this,arguments);var d,e,f,g=this,h=a.indexOf(" ");return h>=0&&(d=a.slice(h),a=a.slice(0,h)),ab.isFunction(b)?(c=b,b=void 0):b&&"object"==typeof b&&(e="POST"),g.length>0&&ab.ajax({url:a,type:e,dataType:"html",data:b}).done(function(a){f=arguments,g.html(d?ab("<div>").append(ab.parseHTML(a)).find(d):a)}).complete(c&&function(a,b){g.each(c,f||[a.responseText,b,a])}),this},ab.expr.filters.animated=function(a){return ab.grep(ab.timers,function(b){return a===b.elem}).length};var Kc=a.document.documentElement;ab.offset={setOffset:function(a,b,c){var d,e,f,g,h,i,j,k=ab.css(a,"position"),l=ab(a),m={};"static"===k&&(a.style.position="relative"),h=l.offset(),f=ab.css(a,"top"),i=ab.css(a,"left"),j=("absolute"===k||"fixed"===k)&&(f+i).indexOf("auto")>-1,j?(d=l.position(),g=d.top,e=d.left):(g=parseFloat(f)||0,e=parseFloat(i)||0),ab.isFunction(b)&&(b=b.call(a,c,h)),null!=b.top&&(m.top=b.top-h.top+g),null!=b.left&&(m.left=b.left-h.left+e),"using"in b?b.using.call(a,m):l.css(m)}},ab.fn.extend({offset:function(a){if(arguments.length)return void 0===a?this:this.each(function(b){ab.offset.setOffset(this,a,b)});var b,c,d=this[0],e={top:0,left:0},f=d&&d.ownerDocument;if(f)return b=f.documentElement,ab.contains(b,d)?(typeof d.getBoundingClientRect!==zb&&(e=d.getBoundingClientRect()),c=P(f),{top:e.top+c.pageYOffset-b.clientTop,left:e.left+c.pageXOffset-b.clientLeft}):e},position:function(){if(this[0]){var a,b,c=this[0],d={top:0,left:0};return"fixed"===ab.css(c,"position")?b=c.getBoundingClientRect():(a=this.offsetParent(),b=this.offset(),ab.nodeName(a[0],"html")||(d=a.offset()),d.top+=ab.css(a[0],"borderTopWidth",!0),d.left+=ab.css(a[0],"borderLeftWidth",!0)),{top:b.top-d.top-ab.css(c,"marginTop",!0),left:b.left-d.left-ab.css(c,"marginLeft",!0)}}},offsetParent:function(){return this.map(function(){for(var a=this.offsetParent||Kc;a&&!ab.nodeName(a,"html")&&"static"===ab.css(a,"position");)a=a.offsetParent;return a||Kc})}}),ab.each({scrollLeft:"pageXOffset",scrollTop:"pageYOffset"},function(b,c){var d="pageYOffset"===c;ab.fn[b]=function(e){return qb(this,function(b,e,f){var g=P(b);return void 0===f?g?g[c]:b[e]:void(g?g.scrollTo(d?a.pageXOffset:f,d?f:a.pageYOffset):b[e]=f)},b,e,arguments.length,null)}}),ab.each(["top","left"],function(a,b){ab.cssHooks[b]=w(Z.pixelPosition,function(a,c){return c?(c=v(a,b),Qb.test(c)?ab(a).position()[b]+"px":c):void 0})}),ab.each({Height:"height",Width:"width"},function(a,b){ab.each({padding:"inner"+a,content:b,"":"outer"+a},function(c,d){ab.fn[d]=function(d,e){var f=arguments.length&&(c||"boolean"!=typeof d),g=c||(d===!0||e===!0?"margin":"border");return qb(this,function(b,c,d){var e;return ab.isWindow(b)?b.document.documentElement["client"+a]:9===b.nodeType?(e=b.documentElement,Math.max(b.body["scroll"+a],e["scroll"+a],b.body["offset"+a],e["offset"+a],e["client"+a])):void 0===d?ab.css(b,c,g):ab.style(b,c,d,g)},b,f?d:void 0,f,null)}})}),ab.fn.size=function(){return this.length},ab.fn.andSelf=ab.fn.addBack,"function"==typeof define&&define.amd&&define("jquery",[],function(){return ab});var Lc=a.jQuery,Mc=a.$;return ab.noConflict=function(b){return a.$===ab&&(a.$=Mc),b&&a.jQuery===ab&&(a.jQuery=Lc),ab},typeof b===zb&&(a.jQuery=a.$=ab),ab});
 </script>
 <!--     <script type="text/javascript" src="js/foundation/foundation.js"></script> -->
-<script>
+<script type="text/javascript">
 /*
  * Foundation Responsive Library
  * http://foundation.zurb.com
@@ -6489,7 +6481,7 @@ h===(d.ownerDocument||$)&&m.push(h.defaultView||h.parentWindow||a)}for(f=0;(g=m[
 }(jQuery, this, this.document));
 </script>
 <!--     <script type="text/javascript" src="js/foundation/foundation.abide.js"></script> -->
-<script>
+<script type="text/javascript">
 ;(function ($, window, document, undefined) {
   'use strict';
 
@@ -6748,7 +6740,7 @@ h===(d.ownerDocument||$)&&m.push(h.defaultView||h.parentWindow||a)}for(f=0;(g=m[
 }(jQuery, this, this.document));
 </script>
 <!--     <script type="text/javascript" src="js/vendor/foundation-datepicker.js"></script> -->
-<script>
+<script type="text/javascript">
 /* =========================================================
  * foundation-datepicker.js
  * Copyright 2013 Peter Beno, najlepsiwebdesigner@gmail.com, @benopeter
@@ -7800,7 +7792,7 @@ h===(d.ownerDocument||$)&&m.push(h.defaultView||h.parentWindow||a)}for(f=0;(g=m[
 }( window.jQuery );
 </script>
 <!--     <script type="text/javascript" src="js/task-object.js"></script> -->
-<script>
+<script type="text/javascript">
 /**********************************************************************
  ***   Task Object file for HTML/JavaScript Application             ***
  ***   @author: Andrew Pomerleau                                    ***
@@ -7885,7 +7877,7 @@ function Task(obj) {
 }
 </script>
 <!--     <script type="text/javascript" src="js/task-manager.js"></script> -->
-<script>
+<script type="text/javascript">
 /**********************************************************************
  ***   Task Manager Object file for HTML/JavaScript Application     ***
  ***   @author: Andrew Pomerleau                                    ***
@@ -7958,30 +7950,49 @@ function TaskManager() {
         var name_div, desc_div, stat_div, name_wrap, name_col, date_col, task_panel, top_row, bottom_row, list_item, isSelected = (this.selected !== null && task.hasId(this.selected.id));
         name_div = $("<span></span>").addClass("task-name");
         name_div.text(task.name);
+
         stat_div = $("<small data-status-id=\"" + task.status + "\"></small>");
         stat_div.addClass("task-status");
         stat_div.text(" (" + task.getStatus() + ")");
+
         name_wrap = $("<h5></h5>");
         name_wrap.append(name_div);
         name_wrap.append(stat_div);
+
         name_col = $("<div></div>").addClass("large-8 columns");
         name_col.append(name_wrap);
+
         date_col = $("<div></div>").addClass("large-4 columns text-right task-duedate");
         date_col.text(task.getDuedate());
+
         top_row = $("<div></div>").addClass("row");
         top_row.append(name_col);
         top_row.append(date_col);
+
         desc_div = $("<div></div>").addClass("large-12 columns task-description");
         desc_div.text(task.description);
         bottom_row = $("<div></div>").addClass("row");
         bottom_row.append(desc_div);
+
+        task_panel = $("<div data-task-id=\"" + task.id + "\"></div>");
+        task_panel.addClass('panel task-panel radius clearfix');
+        if (isSelected) {
+            task_panel.addClass("active-task");
+        }
+        if (task.status === 2) {
+            task_panel.addClass("completed");
+        }
+
+        /**
         if (isSelected) {
             task_panel = $("<div data-task-id=\"" + task.id + "\"></div>").addClass("panel task-panel radius clearfix active-task");
         } else {
             task_panel = $("<div data-task-id=\"" + task.id + "\"></div>").addClass("panel task-panel radius clearfix");
         }
+        **/
         task_panel.append(top_row);
         task_panel.append(bottom_row);
+
         list_item = $("<li></li>").addClass("row");
         list_item.append(task_panel);
         $("#task-list").append($(list_item));
@@ -8142,7 +8153,7 @@ function TaskManager() {
 }
 </script>
 <!--     <script type="text/javascript" src="js/scripts.js"></script> -->
-<script>
+<script type="text/javascript">
 /**********************************************************************
  ***   Main Javascript file for HTML/JavaScript Application         ***
  ***   @author: Andrew Pomerleau                                    ***
@@ -8152,28 +8163,40 @@ function TaskManager() {
 var manager = new TaskManager(),
     samples = [{
         id: 0,
-        name: "Zeroth Task",
-        description: "A task's description of the things to do to complete that task.",
-        duedate: "02/02/2014",
-        status: 0
+        name: "Create Task Object",
+        description: "Create a basic object structure with id, name, description, duedate, and status.",
+        duedate: "02/20/2014",
+        status: 2
     }, {
         id: 1,
-        name: "First Task",
-        description: "Get a new job.",
-        duedate: "05/15/2014",
-        status: 1
+        name: "Link Tasks to Web Form",
+        description: "Enable save, load, and delete functions connected with web-form button events.",
+        duedate: "03/14/2014",
+        status: 2
     }, {
         id: 2,
-        name: "Second Task",
-        description: "Finish task object coding.",
-        duedate: "03/22/2014",
-        status: 1
+        name: "Sort and Filter Options",
+        description: "Create TaskManager object to help, sort, filter and manage an array of tasks.",
+        duedate: "04/04/2014",
+        status: 2
     }, {
         id: 3,
-        name: "Third Task",
-        description: "Finish submitting tax documents.",
-        duedate: "04/15/2014",
-        status: 2
+        name: "Future Features: Ranking",
+        description: "Give tasks an importance ranking of low, medium, or high. And allow sorting/filtering by importance.",
+        duedate: "05/16/2014",
+        status: 1
+    }, {
+        id: 4,
+        name: "Future Features: Progress Bar",
+        description: "Add progress bar/percentage to 'In Progress' tasks. 'Not Started' tasks are defaulted to 0 and 'Completed' tasks are set to 100.",
+        duedate: "05/30/2014",
+        status: 0
+    }, {
+        id: 5,
+        name: "Future Features: Tagging",
+        description: "Add a tagging freature to allow tasks to be organized into categories; such as, 'home,' 'work,' 'bills,' etc.",
+        duedate: "06/13/2014",
+        status: 0
     }];
 initPage();
 
@@ -8235,7 +8258,6 @@ function setSortOptions() {
 
 function sortListener(selector, event) {
     if ($(selector).val() !== 0) {
-        console.log("sorting by: " + $(selector).val());
         manager.changeSort($(selector).val());
 
         refreshDisplay();
@@ -8320,10 +8342,8 @@ function initForm() {
 }
 
 function saveForm() {
-    var task = new Task();
     manager.storeForm();
-    refreshDisplay();
-    manager.clearForm();
+    resetForm();
 }
 
 function resetForm() {

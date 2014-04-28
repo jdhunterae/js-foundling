@@ -1,4 +1,4 @@
-LAST ARCHIVE: 2014-04-26
+LAST ARCHIVE: 2014-04-28
 ========================
 STARTING ARCHIVE PROCESS...
   RETRIEVING PROJECT DIRECTORIES...
@@ -90,6 +90,17 @@ STARTING ARCHIVE PROCESS...
       ARCHIVING: LAB08/index.html
       ARCHIVING: LAB08/php/livesearch.php
       ARCHIVING: LAB08/js/script.js
+  ...DONE
+  RETRIEVING PROJECT DIRECTORIES...
+    ACESSING: LAB09/out
+    ACESSING: LAB09/css
+    ACESSING: LAB09/js
+      ARCHIVING: LAB09/README.md
+      ARCHIVING: LAB09/allinone.py
+      ARCHIVING: LAB09/out/allinone.html
+      ARCHIVING: LAB09/index.html
+      ARCHIVING: LAB09/css/main.css
+      ARCHIVING: LAB09/js/main.js
   ...DONE
   RETRIEVING PROJECT DIRECTORIES...
       ARCHIVING: LABM2/README.md
@@ -189,6 +200,7 @@ STARTING ARCHIVE PROCESS...
   ...DONE
   RETRIEVING PROJECT DIRECTORIES...
     ACESSING: LABXY/img
+    ACESSING: LABXY/out
     ACESSING: LABXY/css
     ACESSING: LABXY/css/vendor
     ACESSING: LABXY/js
@@ -199,6 +211,9 @@ STARTING ARCHIVE PROCESS...
       ARCHIVING: LABXY/img/wt-divider.png
       ARCHIVING: LABXY/img/cal-icon.png
       ARCHIVING: LABXY/test.html
+      ARCHIVING: LABXY/allinone.py
+      ARCHIVING: LABXY/out/allinone.html
+      ARCHIVING: LABXY/out/index.html
       ARCHIVING: LABXY/index.html
       ARCHIVING: LABXY/css/vendor/normalize.css
       ARCHIVING: LABXY/css/vendor/foundation-datepicker.css

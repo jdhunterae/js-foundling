@@ -70,30 +70,49 @@ function TaskManager() {
         var name_div, desc_div, stat_div, name_wrap, name_col, date_col, task_panel, top_row, bottom_row, list_item, isSelected = (this.selected !== null && task.hasId(this.selected.id));
         name_div = $("<span></span>").addClass("task-name");
         name_div.text(task.name);
+
         stat_div = $("<small data-status-id=\"" + task.status + "\"></small>");
         stat_div.addClass("task-status");
         stat_div.text(" (" + task.getStatus() + ")");
+
         name_wrap = $("<h5></h5>");
         name_wrap.append(name_div);
         name_wrap.append(stat_div);
+
         name_col = $("<div></div>").addClass("large-8 columns");
         name_col.append(name_wrap);
+
         date_col = $("<div></div>").addClass("large-4 columns text-right task-duedate");
         date_col.text(task.getDuedate());
+
         top_row = $("<div></div>").addClass("row");
         top_row.append(name_col);
         top_row.append(date_col);
+
         desc_div = $("<div></div>").addClass("large-12 columns task-description");
         desc_div.text(task.description);
         bottom_row = $("<div></div>").addClass("row");
         bottom_row.append(desc_div);
+
+        task_panel = $("<div data-task-id=\"" + task.id + "\"></div>");
+        task_panel.addClass('panel task-panel radius clearfix');
+        if (isSelected) {
+            task_panel.addClass("active-task");
+        }
+        if (task.status === 2) {
+            task_panel.addClass("completed");
+        }
+
+        /**
         if (isSelected) {
             task_panel = $("<div data-task-id=\"" + task.id + "\"></div>").addClass("panel task-panel radius clearfix active-task");
         } else {
             task_panel = $("<div data-task-id=\"" + task.id + "\"></div>").addClass("panel task-panel radius clearfix");
         }
+        **/
         task_panel.append(top_row);
         task_panel.append(bottom_row);
+
         list_item = $("<li></li>").addClass("row");
         list_item.append(task_panel);
         $("#task-list").append($(list_item));
