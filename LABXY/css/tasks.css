@@ -16,8 +16,8 @@
  * Container Specific Styling
  **/
  .completed h5, .completed {
-    color: #999;
     text-decoration: line-through;
+    color: #999;
 }
 .active-task, .filter.active {
     color: #ccc;
