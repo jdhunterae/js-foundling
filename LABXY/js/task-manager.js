@@ -1,11 +1,18 @@
 /**********************************************************************
  ***   Task Manager Object file for HTML/JavaScript Application     ***
  ***   @author: Andrew Pomerleau                                    ***
- ***   @date:   03/24/2014                                          ***
+ ***   @date:   04/28/2014                                          ***
  **********************************************************************/
+
+/**
+ * TaskManager Object for organizing and manipulating an array of tasks
+ *   handles all display features to the webpage and form population and
+ *   retrieval.
+ */
 
 function TaskManager() {
     "use strict";
+    // constants for use to make scripting more 'readable'
     var STORAGE = window.localStorage,
         PREFIX = "TASKS:",
         STORED_ORDER = PREFIX + "order",
@@ -19,17 +26,20 @@ function TaskManager() {
         NEW_ID = -1,
         ind;
 
+    // set up all manager attributes
     this.tasks = [];
     this.selected = null;
     this.sortIndex = SORT_BY_ID;
     this.filters = {};
-
     for (ind in STATUSES) {
         if (STATUSES.hasOwnProperty(ind)) {
             this.filters[ind] = false;
         }
     }
 
+    // method for selecting a task from the page as the 'selected'
+    // task for form manipulation. forwards to deselect if task
+    // is already selected.
     this.selectTask = function(task_id) {
         if (this.selected !== null && this.selected.hasId(task_id)) {
             this.deselectTask();
@@ -46,6 +56,8 @@ function TaskManager() {
             });
         }
     };
+    // method for deselecting a task from the page as the 'selected'
+    // task for form manipulation.
     this.deselectTask = function() {
         this.selected = null;
         $(".task-panel").each(function() {
@@ -54,9 +66,11 @@ function TaskManager() {
         this.clearForm();
     };
 
+    // method for removing all tasks displayed on the page.
     this.clearDisplay = function() {
         $("#task-list").html("");
     };
+    // method for displaying all tasks that pass filters and sorting.
     this.displayTasks = function() {
         var i;
         this.sort();
@@ -66,6 +80,8 @@ function TaskManager() {
             this.display(this.tasks[i]);
         }
     };
+    // method for displaying a single task within the task list on the
+    // page.
     this.display = function(task) {
         var name_div, desc_div, stat_div, name_wrap, name_col, date_col, task_panel, top_row, bottom_row, list_item, isSelected = (this.selected !== null && task.hasId(this.selected.id));
         name_div = $("<span></span>").addClass("task-name");
@@ -103,13 +119,6 @@ function TaskManager() {
             task_panel.addClass("completed");
         }
 
-        /**
-        if (isSelected) {
-            task_panel = $("<div data-task-id=\"" + task.id + "\"></div>").addClass("panel task-panel radius clearfix active-task");
-        } else {
-            task_panel = $("<div data-task-id=\"" + task.id + "\"></div>").addClass("panel task-panel radius clearfix");
-        }
-        **/
         task_panel.append(top_row);
         task_panel.append(bottom_row);
 
@@ -118,6 +127,7 @@ function TaskManager() {
         $("#task-list").append($(list_item));
     };
 
+    // method for retrieving all tasks stored in the localStorage
     this.loadAll = function() {
         var pattern = new RegExp(ENTRY),
             i;
@@ -130,6 +140,7 @@ function TaskManager() {
         }
         return this.tasks;
     };
+    // method for setting all tasks in the localStorage
     this.storeAll = function() {
         var i;
 
@@ -140,6 +151,7 @@ function TaskManager() {
         }
     };
 
+    // method for setting the sorting index for task display
     this.changeSort = function(newIndex) {
         if (STORAGE.getItem(STORED_ORDER) && STORAGE.getItem(STORED_ORDER) === newIndex) {
             newIndex = -1 * newIndex;
@@ -163,6 +175,7 @@ function TaskManager() {
         }
         STORAGE.setItem(STORED_ORDER, this.sortIndex);
     };
+    // method called each time the tasks are displayed to sort the array
     this.sort = function(param) {
         var sorted = this.filter(),
             key;
@@ -180,6 +193,7 @@ function TaskManager() {
         return this.tasks;
     };
 
+    // method for setting an array of filter options to true
     this.setFilter = function(options) {
         var i;
 
@@ -193,9 +207,12 @@ function TaskManager() {
             this.filters[options[i]] = true;
         }
     };
+    // method called to turn a specific filter option, on or off
     this.toggleFilter = function(option) {
         this.filters[option] = !this.filters[option];
     };
+    // method called each time the tasks are displayed to filter out
+    // certain types of tasks from the array
     this.filter = function(param) {
         var filtered = [],
             i;
@@ -217,6 +234,8 @@ function TaskManager() {
         return this.tasks;
     };
 
+    // method attached to the page display to handle task selection/
+    // deselection on click.
     this.taskClickListener = function(task) {
         if (task === this.selected) {
             this.selected = null;
@@ -227,6 +246,8 @@ function TaskManager() {
         }
     };
 
+    // method called to clear all task information from the form
+    // and set the form for new task addition.
     this.clearForm = function() {
         var empty = new Task({
             id: -1
@@ -237,6 +258,8 @@ function TaskManager() {
         $("#op-entry-delete").addClass("disabled");
         this.selected = null;
     };
+    // method for storing information in the form to an existing or
+    // new task in the array.
     this.storeForm = function() {
         var data = {
             id: $("#entry-id").val(),
@@ -249,6 +272,8 @@ function TaskManager() {
         task = new Task(data);
         task.store();
     };
+    // method for displaying a selected task's information in the
+    // form for editing
     this.fillForm = function() {
         var index;
         if (this.selected === null) {
