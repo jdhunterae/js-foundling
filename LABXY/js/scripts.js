@@ -4,6 +4,7 @@
  ***   @date:   02/25/2014                                          ***
  **********************************************************************/
 
+// Task Manager instance attached to page click events
 var manager = new TaskManager(),
     samples = [{
         id: 0,
@@ -44,6 +45,9 @@ var manager = new TaskManager(),
     }];
 initPage();
 
+// method calls the manager's display function, then attaches click
+// listeners to each displayed task panel.
+
 function refreshDisplay() {
     manager.displayTasks();
 
@@ -55,6 +59,8 @@ function refreshDisplay() {
         });
     });
 }
+
+// method called at page load to generate the filter buttons
 
 function setFilterOptions() {
     var list = $("#filters").find(".button-bar").find(".button-group");
@@ -69,6 +75,8 @@ function setFilterOptions() {
     });
 }
 
+// method used to listen for filter button click events
+
 function filterListener(filter, event) {
     $(filter).find("a").toggleClass("active");
 
@@ -82,6 +90,8 @@ function filterListener(filter, event) {
 
     refreshDisplay();
 }
+
+// method called at page load to generate the sort button
 
 function setSortOptions() {
     var keys = ["none", "id", "name", "duedate", "status"],
@@ -100,6 +110,8 @@ function setSortOptions() {
     });
 }
 
+// method used to listen for filter button click events
+
 function sortListener(selector, event) {
     if ($(selector).val() !== 0) {
         manager.changeSort($(selector).val());
@@ -107,6 +119,8 @@ function sortListener(selector, event) {
         refreshDisplay();
     }
 }
+
+// method used to listen for the duedate textfield focus event
 
 function setDuedateListener() {
     $("#duedate-wrapper").bind("click", function(event) {
@@ -117,9 +131,7 @@ function setDuedateListener() {
     });
 }
 
-/**
- * Method for monitoring the datepicker modal attached to the duedate
- **/
+// Method for monitoring the datepicker modal attached to the duedate
 
 function dateInputListener(event) {
     "use strict";
@@ -129,6 +141,8 @@ function dateInputListener(event) {
 
     event.stopPropagation();
 }
+
+// method called to initialize all display aspects of the task page
 
 function initPage() {
     if (window.localStorage.getItem("TASKS:index") === null) {
@@ -149,6 +163,8 @@ function initPage() {
     refreshDisplay();
 }
 
+// method called to remove all task storage items and refresh the app
+
 function purgeStorage() {
     var removal = [];
     for (var i in window.localStorage) {
@@ -161,6 +177,8 @@ function purgeStorage() {
         window.localStorage.removeItem(removal[dex]);
     }
 }
+
+// method used to initialize the task form and disable unusable buttons
 
 function initForm() {
     $("#entry-form").submit(function(event) {
@@ -185,16 +203,22 @@ function initForm() {
     resetForm();
 }
 
+// method used to listen for the form's submit event
+
 function saveForm() {
     manager.storeForm();
     resetForm();
 }
+
+// method used to listen for the form's reset event
 
 function resetForm() {
     manager.clearForm();
     manager.deselectTask();
     refreshDisplay();
 }
+
+// method used to listen for the delete button click event
 
 function deleteForm() {
     if (!($("#op-entry-delete").hasClass('disabled')) && $("#entry-id").val() !== -1) {
