@@ -38,12 +38,16 @@ function purgeStorage() {
     for (var dex in removal) {
         window.localStorage.removeItem(removal[dex]);
     }
+    window.localStorage.setItem("TASKS:testing", true);
 }
 module("Task Object");
 test("Creation - Empty", function() {
     var task = new Task(),
         empty = {
             id: 0,
+            name: "",
+            description: "",
+            duedate: "",
             status: 0
         };
 
@@ -56,6 +60,8 @@ test("Creation - Partial", function() {
     var part = {
         id: 0,
         name: "New Task",
+        description: "",
+        duedate: "",
         status: 0
     }, task = new Task(part);
 

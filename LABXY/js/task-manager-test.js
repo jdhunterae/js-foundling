@@ -20,11 +20,11 @@ test("Store all", function() {
     equal(tasks.length, numRecords, "Length of loaded tasks should be 4.");
 
     purgeStorage();
-    equal(window.localStorage.length, 0, "After purging, localStorage should be empty.");
+    equal(window.localStorage.length, 1, "After purging, localStorage should be empty.");
 
     manager.storeAll();
 
-    equal(window.localStorage.length, numRecords, "After storing tasks, localStorage should have four records again.");
+    equal(window.localStorage.length, numRecords + 2, "After storing tasks, localStorage should have four records again.");
 });
 
 test("Sort tasks by id", function() {

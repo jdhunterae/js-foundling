@@ -108,6 +108,8 @@ function setSortOptions() {
     $(selector).change(function(event) {
         sortListener($(this), event);
     });
+
+    sortListener($(selector).val(1), null);
 }
 
 // method used to listen for filter button click events
@@ -116,6 +118,15 @@ function sortListener(selector, event) {
     if ($(selector).val() !== 0) {
         manager.changeSort($(selector).val());
 
+        $(selector).find("option").each(function() {
+            if ($(this).val() === $(selector).val()) {
+                if (parseInt($(this).val(), 10) !== 0) {
+                    $(selector).find("option:first-child").html("(" + $(this).html() + ")");
+                }
+            }
+        });
+
+        $(selector).val(0);
         refreshDisplay();
     }
 }
@@ -145,7 +156,7 @@ function dateInputListener(event) {
 // method called to initialize all display aspects of the task page
 
 function initPage() {
-    if (window.localStorage.getItem("TASKS:index") === null) {
+    if (window.localStorage.getItem("TASKS:index") === null || window.localStorage.getItem("TASKS:testing")) {
         purgeStorage();
 
         window.localStorage.setItem("TASKS:order", 1);
