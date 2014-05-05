@@ -1,4 +1,4 @@
-LAST ARCHIVE: 2014-04-28
+LAST ARCHIVE: 2014-05-05
 ========================
 STARTING ARCHIVE PROCESS...
   RETRIEVING PROJECT DIRECTORIES...
@@ -156,49 +156,6 @@ STARTING ARCHIVE PROCESS...
       ARCHIVING: LAB02/src/script.js
   ...DONE
   RETRIEVING PROJECT DIRECTORIES...
-    ACESSING: LABXX/img
-    ACESSING: LABXX/css
-    ACESSING: LABXX/css/vendor
-    ACESSING: LABXX/js
-    ACESSING: LABXX/js/foundation
-    ACESSING: LABXX/js/vendor
-      ARCHIVING: LABXX/README.md
-      ARCHIVING: LABXX/img/cal-icon.png
-      ARCHIVING: LABXX/index.html
-      ARCHIVING: LABXX/css/vendor/normalize.css
-      ARCHIVING: LABXX/css/vendor/foundation-datepicker.css
-      ARCHIVING: LABXX/css/vendor/foundation.min.css
-      ARCHIVING: LABXX/css/vendor/foundation.css
-      ARCHIVING: LABXX/css/tasks.css
-      ARCHIVING: LABXX/js/foundation/foundation.reveal.js
-      ARCHIVING: LABXX/js/foundation/foundation.clearing.js
-      ARCHIVING: LABXX/js/foundation/foundation.equalizer.js
-      ARCHIVING: LABXX/js/foundation/foundation.tab.js
-      ARCHIVING: LABXX/js/foundation/foundation.dropdown.js
-      ARCHIVING: LABXX/js/foundation/foundation.orbit.js
-      ARCHIVING: LABXX/js/foundation/foundation.js
-      ARCHIVING: LABXX/js/foundation/foundation.min.js
-      ARCHIVING: LABXX/js/foundation/foundation.tooltip.js
-      ARCHIVING: LABXX/js/foundation/foundation.offcanvas.js
-      ARCHIVING: LABXX/js/foundation/foundation.interchange.js
-      ARCHIVING: LABXX/js/foundation/foundation.alert.js
-      ARCHIVING: LABXX/js/foundation/foundation.joyride.js
-      ARCHIVING: LABXX/js/foundation/foundation.magellan.js
-      ARCHIVING: LABXX/js/foundation/foundation.accordion.js
-      ARCHIVING: LABXX/js/foundation/foundation.topbar.js
-      ARCHIVING: LABXX/js/foundation/foundation.abide.js
-      ARCHIVING: LABXX/js/tasks.js
-      ARCHIVING: LABXX/js/vendor/jquery.cookie.js
-      ARCHIVING: LABXX/js/vendor/fastclick.js
-      ARCHIVING: LABXX/js/vendor/modernizr.js
-      ARCHIVING: LABXX/js/vendor/placeholder.js
-      ARCHIVING: LABXX/js/vendor/foundation-datepicker.js
-      ARCHIVING: LABXX/js/vendor/jquery.js
-      ARCHIVING: LABXX/js/temp-tasks.js
-      ARCHIVING: LABXX/js/old-tasks.js
-      ARCHIVING: LABXX/js/task-object.js
-  ...DONE
-  RETRIEVING PROJECT DIRECTORIES...
     ACESSING: LABXY/img
     ACESSING: LABXY/out
     ACESSING: LABXY/css
@@ -208,12 +165,10 @@ STARTING ARCHIVE PROCESS...
     ACESSING: LABXY/js/vendor
       ARCHIVING: LABXY/README.md
       ARCHIVING: LABXY/img/wt-logo.png
-      ARCHIVING: LABXY/img/wt-divider.png
       ARCHIVING: LABXY/img/cal-icon.png
       ARCHIVING: LABXY/test.html
       ARCHIVING: LABXY/allinone.py
       ARCHIVING: LABXY/out/allinone.html
-      ARCHIVING: LABXY/out/index.html
       ARCHIVING: LABXY/index.html
       ARCHIVING: LABXY/css/vendor/normalize.css
       ARCHIVING: LABXY/css/vendor/foundation-datepicker.css

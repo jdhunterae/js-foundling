@@ -1,7 +1,7 @@
 <!--
   HTML/JavaScript Application
   @author: Andrew Pomerleau
-  @date:   03/21/2014
+  @date:   04/28/2014
 -->
 
 <!doctype html>
@@ -5696,8 +5696,8 @@ th.hide-for-touch {
  * Container Specific Styling
  **/
  .completed h5, .completed {
-    color: #999;
     text-decoration: line-through;
+    color: #999;
 }
 .active-task, .filter.active {
     color: #ccc;
@@ -5736,7 +5736,6 @@ window.Modernizr=function(a,b,c){function d(a){t.cssText=a}function e(a,b){retur
     <!-- HEADLINER -->
     <div class="row">
         <div class="large-12 columns">
-            <!-- <h1>Welcome to WebTasks</h1> -->
             <div id="wt-header">
                 <img id="wt-logo" src="img/wt-logo.png" alt="WebTasks logo" />
             </div>
@@ -7799,8 +7798,15 @@ h===(d.ownerDocument||$)&&m.push(h.defaultView||h.parentWindow||a)}for(f=0;(g=m[
  ***   @date:   04/28/2014                                          ***
  **********************************************************************/
 
+/**
+ * Task Object
+ * @param obj object containing some or all of the Task object's
+ *                   attributes for assignment.
+ */
+
 function Task(obj) {
     "use strict";
+    // constants for use to make scripting more 'readable'
     var STORAGE = window.localStorage,
         PREFIX = "TASKS:",
         STORED_INDEX = PREFIX + "index",
@@ -7808,18 +7814,22 @@ function Task(obj) {
         NEW_ID = -1,
         STATUSES = ["Not Started", "In Progress", "Completed"];
 
+    // check type of object and parse or assign empty object
+    // if necessary.
     if ((typeof obj) === "string") {
         obj = JSON.parse(obj);
     } else if (!obj) {
         obj = {};
     }
 
+    // assign attributes from object, or set to default value.
     this.id = parseInt(obj.id, 10) || 0;
     this.name = obj.name || "";
     this.description = obj.description || "";
     this.duedate = obj.duedate || "";
     this.status = parseInt(obj.status, 10) || 0;
 
+    // declare 'pretty' getters for number to string values.
     this.getDuedate = function() {
         return this.duedate.replace(/\//g, "-");
     };
@@ -7830,6 +7840,7 @@ function Task(obj) {
         return STATUSES[this.status];
     };
 
+    // method for parsing loaded json string into object
     this.parse = function(data) {
         var prop;
         data = JSON.parse(data);
@@ -7840,6 +7851,7 @@ function Task(obj) {
         }
     };
 
+    // method for storing object to localStorage as json string
     this.store = function() {
         var json;
         if (this.id === NEW_ID) {
@@ -7851,6 +7863,7 @@ function Task(obj) {
             STORAGE.setItem(STORED_INDEX, this.id + 1);
         }
     };
+    // method for retrieving json string from localStorage
     this.load = function() {
         var data;
         if (isNaN(this.id)) {
@@ -7860,13 +7873,16 @@ function Task(obj) {
         this.parse(data);
     };
 
+    // method for removing this task from localStorage
     this.delete = function() {
         STORAGE.removeItem(ENTRY + this.id);
     };
 
+    // checks that this task's id attribute matches argument
     this.hasId = function(task_id) {
         return (parseInt(this.id, 10) === parseInt(task_id, 10));
     };
+    // checks that this task's json string matches the argument
     this.equals = function(task) {
         var us, them;
         us = JSON.stringify(this);
@@ -7881,11 +7897,18 @@ function Task(obj) {
 /**********************************************************************
  ***   Task Manager Object file for HTML/JavaScript Application     ***
  ***   @author: Andrew Pomerleau                                    ***
- ***   @date:   03/24/2014                                          ***
+ ***   @date:   04/28/2014                                          ***
  **********************************************************************/
+
+/**
+ * TaskManager Object for organizing and manipulating an array of tasks
+ *   handles all display features to the webpage and form population and
+ *   retrieval.
+ */
 
 function TaskManager() {
     "use strict";
+    // constants for use to make scripting more 'readable'
     var STORAGE = window.localStorage,
         PREFIX = "TASKS:",
         STORED_ORDER = PREFIX + "order",
@@ -7899,17 +7922,20 @@ function TaskManager() {
         NEW_ID = -1,
         ind;
 
+    // set up all manager attributes
     this.tasks = [];
     this.selected = null;
     this.sortIndex = SORT_BY_ID;
     this.filters = {};
-
     for (ind in STATUSES) {
         if (STATUSES.hasOwnProperty(ind)) {
             this.filters[ind] = false;
         }
     }
 
+    // method for selecting a task from the page as the 'selected'
+    // task for form manipulation. forwards to deselect if task
+    // is already selected.
     this.selectTask = function(task_id) {
         if (this.selected !== null && this.selected.hasId(task_id)) {
             this.deselectTask();
@@ -7926,6 +7952,8 @@ function TaskManager() {
             });
         }
     };
+    // method for deselecting a task from the page as the 'selected'
+    // task for form manipulation.
     this.deselectTask = function() {
         this.selected = null;
         $(".task-panel").each(function() {
@@ -7934,9 +7962,11 @@ function TaskManager() {
         this.clearForm();
     };
 
+    // method for removing all tasks displayed on the page.
     this.clearDisplay = function() {
         $("#task-list").html("");
     };
+    // method for displaying all tasks that pass filters and sorting.
     this.displayTasks = function() {
         var i;
         this.sort();
@@ -7946,6 +7976,8 @@ function TaskManager() {
             this.display(this.tasks[i]);
         }
     };
+    // method for displaying a single task within the task list on the
+    // page.
     this.display = function(task) {
         var name_div, desc_div, stat_div, name_wrap, name_col, date_col, task_panel, top_row, bottom_row, list_item, isSelected = (this.selected !== null && task.hasId(this.selected.id));
         name_div = $("<span></span>").addClass("task-name");
@@ -7983,13 +8015,6 @@ function TaskManager() {
             task_panel.addClass("completed");
         }
 
-        /**
-        if (isSelected) {
-            task_panel = $("<div data-task-id=\"" + task.id + "\"></div>").addClass("panel task-panel radius clearfix active-task");
-        } else {
-            task_panel = $("<div data-task-id=\"" + task.id + "\"></div>").addClass("panel task-panel radius clearfix");
-        }
-        **/
         task_panel.append(top_row);
         task_panel.append(bottom_row);
 
@@ -7998,6 +8023,7 @@ function TaskManager() {
         $("#task-list").append($(list_item));
     };
 
+    // method for retrieving all tasks stored in the localStorage
     this.loadAll = function() {
         var pattern = new RegExp(ENTRY),
             i;
@@ -8010,6 +8036,7 @@ function TaskManager() {
         }
         return this.tasks;
     };
+    // method for setting all tasks in the localStorage
     this.storeAll = function() {
         var i;
 
@@ -8020,6 +8047,7 @@ function TaskManager() {
         }
     };
 
+    // method for setting the sorting index for task display
     this.changeSort = function(newIndex) {
         if (STORAGE.getItem(STORED_ORDER) && STORAGE.getItem(STORED_ORDER) === newIndex) {
             newIndex = -1 * newIndex;
@@ -8043,6 +8071,7 @@ function TaskManager() {
         }
         STORAGE.setItem(STORED_ORDER, this.sortIndex);
     };
+    // method called each time the tasks are displayed to sort the array
     this.sort = function(param) {
         var sorted = this.filter(),
             key;
@@ -8060,6 +8089,7 @@ function TaskManager() {
         return this.tasks;
     };
 
+    // method for setting an array of filter options to true
     this.setFilter = function(options) {
         var i;
 
@@ -8073,9 +8103,12 @@ function TaskManager() {
             this.filters[options[i]] = true;
         }
     };
+    // method called to turn a specific filter option, on or off
     this.toggleFilter = function(option) {
         this.filters[option] = !this.filters[option];
     };
+    // method called each time the tasks are displayed to filter out
+    // certain types of tasks from the array
     this.filter = function(param) {
         var filtered = [],
             i;
@@ -8097,6 +8130,8 @@ function TaskManager() {
         return this.tasks;
     };
 
+    // method attached to the page display to handle task selection/
+    // deselection on click.
     this.taskClickListener = function(task) {
         if (task === this.selected) {
             this.selected = null;
@@ -8107,6 +8142,8 @@ function TaskManager() {
         }
     };
 
+    // method called to clear all task information from the form
+    // and set the form for new task addition.
     this.clearForm = function() {
         var empty = new Task({
             id: -1
@@ -8117,6 +8154,8 @@ function TaskManager() {
         $("#op-entry-delete").addClass("disabled");
         this.selected = null;
     };
+    // method for storing information in the form to an existing or
+    // new task in the array.
     this.storeForm = function() {
         var data = {
             id: $("#entry-id").val(),
@@ -8129,6 +8168,8 @@ function TaskManager() {
         task = new Task(data);
         task.store();
     };
+    // method for displaying a selected task's information in the
+    // form for editing
     this.fillForm = function() {
         var index;
         if (this.selected === null) {
@@ -8160,6 +8201,7 @@ function TaskManager() {
  ***   @date:   02/25/2014                                          ***
  **********************************************************************/
 
+// Task Manager instance attached to page click events
 var manager = new TaskManager(),
     samples = [{
         id: 0,
@@ -8200,6 +8242,9 @@ var manager = new TaskManager(),
     }];
 initPage();
 
+// method calls the manager's display function, then attaches click
+// listeners to each displayed task panel.
+
 function refreshDisplay() {
     manager.displayTasks();
 
@@ -8211,6 +8256,8 @@ function refreshDisplay() {
         });
     });
 }
+
+// method called at page load to generate the filter buttons
 
 function setFilterOptions() {
     var list = $("#filters").find(".button-bar").find(".button-group");
@@ -8225,6 +8272,8 @@ function setFilterOptions() {
     });
 }
 
+// method used to listen for filter button click events
+
 function filterListener(filter, event) {
     $(filter).find("a").toggleClass("active");
 
@@ -8238,6 +8287,8 @@ function filterListener(filter, event) {
 
     refreshDisplay();
 }
+
+// method called at page load to generate the sort button
 
 function setSortOptions() {
     var keys = ["none", "id", "name", "duedate", "status"],
@@ -8254,15 +8305,30 @@ function setSortOptions() {
     $(selector).change(function(event) {
         sortListener($(this), event);
     });
+
+    sortListener($(selector).val(1), null);
 }
+
+// method used to listen for filter button click events
 
 function sortListener(selector, event) {
     if ($(selector).val() !== 0) {
         manager.changeSort($(selector).val());
 
+        $(selector).find("option").each(function() {
+            if ($(this).val() === $(selector).val()) {
+                if (parseInt($(this).val(), 10) !== 0) {
+                    $(selector).find("option:first-child").html("(" + $(this).html() + ")");
+                }
+            }
+        });
+
+        $(selector).val(0);
         refreshDisplay();
     }
 }
+
+// method used to listen for the duedate textfield focus event
 
 function setDuedateListener() {
     $("#duedate-wrapper").bind("click", function(event) {
@@ -8273,9 +8339,7 @@ function setDuedateListener() {
     });
 }
 
-/**
- * Method for monitoring the datepicker modal attached to the duedate
- **/
+// Method for monitoring the datepicker modal attached to the duedate
 
 function dateInputListener(event) {
     "use strict";
@@ -8286,8 +8350,10 @@ function dateInputListener(event) {
     event.stopPropagation();
 }
 
+// method called to initialize all display aspects of the task page
+
 function initPage() {
-    if (window.localStorage.getItem("TASKS:index") === null) {
+    if (window.localStorage.getItem("TASKS:index") === null || window.localStorage.getItem("TASKS:testing")) {
         purgeStorage();
 
         window.localStorage.setItem("TASKS:order", 1);
@@ -8305,6 +8371,8 @@ function initPage() {
     refreshDisplay();
 }
 
+// method called to remove all task storage items and refresh the app
+
 function purgeStorage() {
     var removal = [];
     for (var i in window.localStorage) {
@@ -8317,6 +8385,8 @@ function purgeStorage() {
         window.localStorage.removeItem(removal[dex]);
     }
 }
+
+// method used to initialize the task form and disable unusable buttons
 
 function initForm() {
     $("#entry-form").submit(function(event) {
@@ -8341,16 +8411,22 @@ function initForm() {
     resetForm();
 }
 
+// method used to listen for the form's submit event
+
 function saveForm() {
     manager.storeForm();
     resetForm();
 }
+
+// method used to listen for the form's reset event
 
 function resetForm() {
     manager.clearForm();
     manager.deselectTask();
     refreshDisplay();
 }
+
+// method used to listen for the delete button click event
 
 function deleteForm() {
     if (!($("#op-entry-delete").hasClass('disabled')) && $("#entry-id").val() !== -1) {
