@@ -97,6 +97,10 @@ function setSortOptions() {
     var keys = ["none", "id", "name", "duedate", "status"],
         selector = $("#task-order");
 
+    if (window.localStorage.getItem("TASKS:order")) {
+        keys[0] = "(" + keys[Math.abs(parseInt(window.localStorage.getItem("TASKS:order"), 10))] + ")";
+    }
+
     $(selector).html("");
 
     $.each(keys, function(ind, text) {
@@ -108,8 +112,6 @@ function setSortOptions() {
     $(selector).change(function(event) {
         sortListener($(this), event);
     });
-
-    sortListener($(selector).val(1), null);
 }
 
 // method used to listen for filter button click events
