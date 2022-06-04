@@ -3,7 +3,7 @@
  ***   @author: Andrew Pomerleau                                    ***
  ***   @date:   02/09/2014                                          ***
  **********************************************************************/
-var CONSOLE = 0,
+const CONSOLE = 0,
   USER_RAW = 1,
   USER_PARSED = 2,
   ACTION = 3,
@@ -12,7 +12,12 @@ var CONSOLE = 0,
   START_BATTLE = 2,
   LOST_BATTLE = 3,
   WON_BATTLE = 4,
-  gameStep = INTRODUCTION,
+  SPIDER = 0,
+  GARGOYLE = 1,
+  LYCANTHROPE = 2,
+  VAMPIRE = 3,
+  HYDRA = 4;
+let gameStep = INTRODUCTION,
   monNames = ["Giant Spider", "Gargoyle", "Lycanthrope", "Vampire", "Hydra"],
   creature = {
     "name": "",
@@ -33,7 +38,6 @@ var CONSOLE = 0,
  * @param text String to display in #input_prompt
  *
  */
-
 function promptUser(text) {
   document.getElementById("input_prompt").innerHTML = text;
 }
@@ -42,7 +46,6 @@ function promptUser(text) {
  * Removes all text in the output div to start a new instance of
  * the game.
  */
-
 function clearOutput() {
   document.getElementById("output").innerHTML = "";
 }
@@ -54,9 +57,8 @@ function clearOutput() {
  * @param code Integer referenced to USER_*, ACTION, CONSOLE
  *
  */
-
 function sendOuput(text, code) {
-  var output_div = document.getElementById("output");
+  let output_div = document.getElementById("output");
 
   switch (code) {
     case USER_RAW:
@@ -71,6 +73,8 @@ function sendOuput(text, code) {
     case ACTION:
       text = "<span class=\"action\">" + text + "</span>";
       break;
+    default:
+      text = "<span class=\"error\">I'm not sure how you got here. '" + text + "'</span>";
   }
 
   output_div.innerHTML = output_div.innerHTML + "<br/>" + text;
@@ -83,10 +87,9 @@ function sendOuput(text, code) {
  * @return Object creature
  *
  */
-
 function getMonster() {
-  var index = Math.round(Math.random() * monsters.length, 0);
-  if (index >= monsters.length) index = monsters.length - 1;
+  let index = Math.round(Math.random() * monsters.length, 0);
+  if (index >= monsters.length) { index = monsters.length - 1; }
 
   return monsters[index];
 }
@@ -95,39 +98,42 @@ function getMonster() {
  * Randomly populates the monsters array based on names in the
  * monNames array.
  */
-
 function prepareMonsters() {
-  for (var i = 0; i < monsters.length; i++) {
+  for (let i = 0; i < monsters.length; i++) {
     monsters[i] = JSON.parse(JSON.stringify(creature));
 
     monsters[i].name = monNames[i];
 
     switch (i) {
-      case 0:
-        monsters[i].is_strong = true;
+      case SPIDER:
+        monsters[i].is_strong = false;
         monsters[i].is_fast = true;
         monsters[i].is_smart = false;
         break;
-      case 1:
+      case GARGOYLE:
         monsters[i].is_strong = true;
         monsters[i].is_fast = false;
         monsters[i].is_smart = true;
         break;
-      case 2:
+      case LYCANTHROPE:
         monsters[i].is_strong = true;
         monsters[i].is_fast = true;
         monsters[i].is_smart = false;
         break;
-      case 3:
+      case VAMPIRE:
         monsters[i].is_strong = true;
         monsters[i].is_fast = true;
         monsters[i].is_smart = true;
         break;
-      case 4:
+      case HYDRA:
         monsters[i].is_strong = true;
         monsters[i].is_fast = false;
         monsters[i].is_smart = false;
         break;
+      default:
+        monsters[i].is_strong = false;
+        monsters[i].is_fast = false;
+        monsters[i].is_smart = false;
     }
   }
 }
@@ -135,27 +141,26 @@ function prepareMonsters() {
 /**
  * Prepares the player creature before allowing the player to customize.
  */
-
 function preparePlayer() {
-  player.is_smart = player.is_fast = player.is_strong = true;
+  player.is_smart = true;
+  player.is_fast = true;
+  player.is_strong = true;
 }
 
 /**
  * Prepares player and monster creatures to start the game loop.
  */
-
 function initGame() {
   prepareMonsters();
-  prepareMonsters();
+  preparePlayer();
 }
 
 /**
  * Prints the message welcoming the player to the game and the
  * first action messages of the game.
  */
-
 function printIntro() {
-  var message;
+  let message;
 
   if (player.name !== "") {
     monster = getMonster();
@@ -184,9 +189,8 @@ function printIntro() {
  * Main game loop, handles logic depending on the current 'step' or
  * stage in the game.
  */
-
 function mainLoop(step) {
-  var inputError = (lastStep === step);
+  let inputError = (lastStep === step);
   lastStep = step;
 
   switch (step) {
@@ -204,7 +208,7 @@ function mainLoop(step) {
       promptUser("What will you do? (<strong>FIGHT</strong>, <strong>OUTWIT</strong>, or <strong>RUN</strong>)");
       break;
     case START_BATTLE:
-      var outDoes = Math.random();
+      let outDoes = Math.random();
       if (running) {
         if (!monster.is_fast || outDoes > 0.5) {
           sendOuput("<strong class=\"command\">" + player.name + "</strong> runs off before the creature knows what's going on, and lives to fight another day.", ACTION);
@@ -248,10 +252,9 @@ function mainLoop(step) {
 /**
  * Handles all user input through the onclick event of the submit button.
  */
-
 function submitInput() {
   if (document.getElementById("submit_button").value == "submit") {
-    var userInput = document.getElementById("user_input").value;
+    let userInput = document.getElementById("user_input").value;
     sendOuput(userInput, USER_RAW);
 
     switch (gameStep) {
