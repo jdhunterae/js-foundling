@@ -7,7 +7,6 @@
 /**
  * Clears all elements from the #error_message div.
  */
-
 function clear_message() {
   var error_field = document.getElementById("error_message");
   error_field.innerHTML = "";
@@ -19,21 +18,19 @@ function clear_message() {
  * @param message String text to be placed in the #error_message div
  *
  */
-
 function set_message(message) {
   var error_field = document.getElementById("error_message");
   error_field.innerHTML = "<p>*" + message + "</p>";
 }
 
 /**
- * Empties the fields within the form.
+ * Builds the page menu list elements.
  *
  * @param current_page String name of the current rendered page
  *
  * @return string representation of the menu as a ul object
  *
  */
-
 function get_menu(current_page) {
   var pages = ["home", "services", "portfolio", "contact", "about"];
   // var html = "<h3>Site Menu</h3>";
@@ -41,13 +38,17 @@ function get_menu(current_page) {
 
   for (var i = 0; i < pages.length; i++) {
     html += "<li>";
+
     if (current_page != pages[i]) {
       html += "<a href=\"#" + pages[i] + "\">";
     }
+
     html += pages[i];
+
     if (current_page != pages[i]) {
       html += "</a>";
     }
+
     html += "</li>";
   }
 
@@ -62,10 +63,9 @@ function get_menu(current_page) {
  * @return boolean success
  *
  */
-
 function reset_form() {
   clear_message();
-  
+
   document.forms.feedback_form.first_name.value = "";
   document.forms.feedback_form.last_name.value = "";
   document.forms.feedback_form.email.value = "";
@@ -81,7 +81,6 @@ function reset_form() {
  * @return boolean if both elements are valid
  *
  */
-
 function validate_name() {
   var first_name = document.forms.feedback_form.first_name.value;
   var last_name = document.forms.feedback_form.last_name.value;
@@ -101,7 +100,6 @@ function validate_name() {
  * @return boolean if element is valid
  *
  */
-
 function validate_email() {
   var email = document.forms.feedback_form.email.value;
   var position_at = email.indexOf("@");
@@ -125,15 +123,13 @@ function validate_email() {
  * @return boolean if element is valid
  *
  */
-
 function validate_phone() {
   var phone = document.forms.feedback_form.phone.value;
   phone = phone.replace(/[^0-9]/g, '');
 
   if (phone.length != 7 && phone.length != 10) {
     // alert("Not a valid email.");
-    set_message("You must enter a valid phone number (with or without " +
-      "area-code) to continue.");
+    set_message("You must enter a valid phone number (with or without area-code) to continue.");
     return false;
   }
 
@@ -146,14 +142,12 @@ function validate_phone() {
  * @return boolean if element is valid
  *
  */
-
 function validate_comments() {
   var comments = document.forms.feedback_form.comments.value;
 
   if (comments.length < 2) {
     // alert("Not a valid comment.");
-    set_message("You must enter a message into the Feedback/Comments" +
-      " field to continue.");
+    set_message("You must enter a message into the Feedback/Comments field to continue.");
     return false;
   }
 
@@ -167,8 +161,6 @@ function validate_comments() {
  * @return boolean if all form elements are valid
  *
  */
-
 function validate_feedback() {
-  return (validate_name() && validate_email() &&
-    validate_phone() && validate_comments());
+  return (validate_name() && validate_email() && validate_phone() && validate_comments());
 }
