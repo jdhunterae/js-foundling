@@ -11,7 +11,7 @@
 /**
  * Container specific styling
  **/
- #output {
+#output {
   overflow: auto;
   height: 330px;
   background: #ddd;
@@ -36,10 +36,10 @@
 #input strong {
   color: #fd0;
 }
-#input input[type='text'] {
+#input input[type="text"] {
   width: 75%;
 }
-#input input[type='button'] {
+#input input[type="button"] {
   width: 20%;
 }
 #form * {
