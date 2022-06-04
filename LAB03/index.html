@@ -9,6 +9,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LAB 03 :: Control Structures Game</title>
 
   <!-- STYLES LOADING BAY -->
@@ -19,19 +20,19 @@
 </head>
 
 <body>
-
   <div id="output"></div>
   <div id="input">
     <div id="form">
       <p id="input_prompt"></p>
-      <input type="text" name="" id="user_input" onkeydown="if (event.keyCode == 13) document.getElementById('submit_button').click();" />
+      <input type="text" name="" id="user_input"
+        onkeydown="if (event.keyCode == 13) document.getElementById('submit_button').click();" />
       <input type="button" value="submit" id="submit_button" onclick="submitInput();" />
     </div>
   </div>
 
   <!-- POST-DOM SCRIPTS LOADING BAY -->
   <script>
-  mainLoop(gameStep);
+    mainLoop(gameStep);
   </script>
 </body>
 
