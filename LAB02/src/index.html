@@ -9,6 +9,8 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Car Payment Calculator</title>
 
   <!-- STYLES LOADING BAY -->
@@ -28,9 +30,10 @@
         </tr>
         <tr>
           <td class="directions" colspan="2">Enter the details of your loan.
-            <br/>Click the
+            <br />Click the
             <strong>calculate</strong>
-            button to calculate the monthly payments.</td>
+            button to calculate the monthly payments.
+          </td>
         </tr>
       </thead>
 
@@ -48,7 +51,8 @@
             <label for="interest_rate">Yearly Interest Rate:</label>
           </td>
           <td>
-            <input type="text" name="interest_rate" id="interest_rate" size="7em">&#37;</td>
+            <input type="text" name="interest_rate" id="interest_rate" size="7em">&#37;
+          </td>
         </tr>
         <tr>
           <td class="label">
@@ -61,7 +65,8 @@
 
         <tr>
           <td colspan="2">
-            <input type="button" value="calculate" id="calculate_button" onclick="return calculateForm();" name="calculate_button" />
+            <input type="button" value="calculate" id="calculate_button" onclick="return calculateForm();"
+              name="calculate_button" />
           </td>
         </tr>
         <tr>
@@ -101,7 +106,7 @@
           </td>
         </tr>
       </tbody>
-      
+
     </table>
   </form>
 

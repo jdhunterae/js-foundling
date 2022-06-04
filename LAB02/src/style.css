@@ -7,7 +7,7 @@
 /**
  * Style Formatting
  **/
- body {
+body {
   font-family: Tahoma, Verdana, Segoe, sans-serif;
   color: #333;
   background-color: #e5e5e5;
@@ -17,32 +17,32 @@ table {
   border: 2px solid #0e0e0e;
 }
 thead {
-  border: 2px solid: #0e0e0e;
+  border: 2px solid #0e0e0e;
   background-color: #cecece;
 }
 tbody {
   background-color: #ececee;
 }
-td[colspan='2'] input {
+td[colspan="2"] input {
   float: right;
 }
 input {
   text-align: right;
   border-radius: 5px;
 }
-input[type='button'] {
+input[type="button"] {
   padding: 4px 12px;
   color: #333;
   background-color: #aaa;
 }
-input[readonly='readonly'] {
+input[readonly="readonly"] {
   color: #333;
   background-color: #e5e5e5;
 }
 /**
  * Container specific styling
  **/
- .title {
+.title {
   text-transform: capitalize;
   color: #0e0e0e;
 }

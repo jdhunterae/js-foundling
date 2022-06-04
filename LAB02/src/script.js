@@ -12,7 +12,6 @@ var total_loan_box, interest_rate_box, loan_term_box,
  * Stores DOM elements into the local variables for easier access in
  * form validation and calculation methods.
  **/
-
 function setFields() {
   message_box = document.getElementById("error_message");
   total_loan_box = document.getElementById("total_loan");
@@ -33,7 +32,6 @@ function setFields() {
  * Places a message into the #error_message field to communicate form
  * validation with the user.
  **/
-
 function speakToUser(message) {
   message_box.innerHTML = message;
 }
@@ -41,7 +39,6 @@ function speakToUser(message) {
 /**
  * Sets a stored element to the focus_box variable for selection.
  **/
-
 function focusOnBox(box_id) {
   focus_box = document.getElementById(box_id);
 }
@@ -53,7 +50,6 @@ function focusOnBox(box_id) {
  * @return boolean form is ready for calculation
  *
  **/
-
 function formIsValid() {
   if (total_loan_box.value === "" || isNaN(total_loan_box.value)) {
     speakToUser("You must enter a valid decimal number for the <strong>Total Loan Amount</strong>.");
@@ -82,7 +78,6 @@ function formIsValid() {
  *
  * @return boolean form calculations completed
  **/
-
 function calculateForm() {
   setFields();
 
