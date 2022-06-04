@@ -9,7 +9,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Weberleau Designs :: Customer Feedback Submitted</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Weberleau Designs :: Customer Feedback Form</title>
 
   <!-- STYLES LOADING BAY -->
   <link rel="stylesheet" href="css/main.css" />
@@ -27,37 +29,44 @@
 
   <div id="menu">
     <script>
-    document.write(get_menu("contact"));
+      document.write(get_menu("contact"));
     </script>
   </div>
 
   <div id="content">
     <h3>Contact/Feedback</h3>
-    <p>We love to hear from our customers, and potential clients. Please use the form below to submit any questions or comments you have.</p>
-    <form action="submit_feedback.html" id="feedback_form" method="get" onsubmit="return validate_feedback();" name="feedback_form" onreset="return reset_form();">
+    <p>We love to hear from our customers, and potential clients. Please use the form below to submit any questions or
+      comments you have.</p>
+    <form action="submit_feedback.html" id="feedback_form" method="get" onsubmit="return validate_feedback();"
+      name="feedback_form" onreset="return reset_form();">
       <fieldset>
         <legend>Customer Feedback Information</legend>
 
         <div id="error_message"></div>
+
         <label for="first_name">Name:</label>
         <input type="text" name="first_name" placeholder="first name" id="first_name" />
         <input type="text" name="last_name" placeholder="last name" id="last_name" />
-        <br/>
+        <br />
+
         <label>
           E-mail:
           <input type="text" name="email" placeholder="someone@web.com" id="email" />
         </label>
         <label>
           Phone:
-          <input type="text" name="phone" placeholder="740-555-5512" id="phone" />
+          <input type="text" name="phone" placeholder="740-555-1234" id="phone" />
         </label>
-        <br/>
+        <br />
+
         <label>
           Feedback/Comments:
-          <br/>
-          <textarea id="comments" maxlength="1000" rows="6" placeholder="Comments and questions..." cols="50"></textarea>
+          <br />
+          <textarea id="comments" maxlength="1000" rows="6" placeholder="Comments and questions..."
+            cols="50"></textarea>
         </label>
-        <br/>
+        <br />
+
         <span id="buttons">
           <input type="submit" id="submit" name="submit" value="submit" />
           <input type="reset" onclick="reset_form();" id="reset" name="reset" value="reset" />
@@ -68,9 +77,10 @@
 
   <div id="social">
     <h3>Keep Up with Us on the Twitterbook+</h3>
+
     <p>Find us on all of your favorite social media pages.
-      <br/>And don't forget to subscribe to learn about new and discounted services.
-      <br/>
+      <br />And don't forget to subscribe to learn about new and discounted services.
+      <br />
       <span id="icons">
         <a href="http://plus.google.com">
           <img src="img/google_plus.png" alt="google+ icon">
@@ -83,6 +93,7 @@
         </a>
       </span>
     </p>
+
     <h5>We Have a No Social-Ville Request Guarantee.</h5>
   </div>
 
